@@ -21,8 +21,8 @@
       </a>
 
       <nav class="desktop-nav" aria-label="Navigation principale">
-        <a href="#offers" data-i18n="navOffers">Offres</a>
         <a href="#request" data-i18n="navRequest">Devis</a>
+        <a href="#offers" data-i18n="navOffers">Offres</a>
         <a href="#trust" data-i18n="navTrust">Pourquoi nous</a>
         <a href="#contact" data-i18n="navContact">Contact</a>
       </nav>
@@ -40,8 +40,8 @@
     </header>
 
     <nav class="mobile-menu" id="mobileMenu" aria-label="Menu mobile">
-      <a href="#offers" data-i18n="navOffers">Offres</a>
       <a href="#request" data-i18n="navRequest">Devis</a>
+      <a href="#offers" data-i18n="navOffers">Offres</a>
       <a href="#trust" data-i18n="navTrust">Pourquoi nous</a>
       <a href="#contact" data-i18n="navContact">Contact</a>
     </nav>
@@ -55,8 +55,8 @@
           <p data-i18n="heroSubtitle">Découvrez des offres sélectionnées avec soin et profitez d’un accompagnement fiable, du premier message jusqu’au départ.</p>
 
           <div class="hero-actions">
-            <a href="#offers" class="btn btn-gold" data-i18n="seeOffers">Découvrir les offres</a>
-            <a href="#request" class="btn btn-glass" data-i18n="quoteBtn">Demander un devis</a>
+            <a href="#request" class="btn btn-gold" data-i18n="quoteBtn">Demander un devis</a>
+            <a href="#offers" class="btn btn-glass" data-i18n="seeOffers">Découvrir les offres</a>
           </div>
 
           <div class="service-grid">
@@ -76,7 +76,40 @@
         </div>
       </section>
 
-      <section id="offers" class="section offers-section">
+      <section id="request" class="section request-section form-first-section">
+        <div class="request-card">
+          <div class="form-head">
+            <span class="section-label" data-i18n="requestLabel">Demande personnalisée</span>
+            <h2 data-i18n="requestTitle">Recevez une proposition rapidement.</h2>
+            <p data-i18n="requestSubtitle">Laissez votre nom, votre WhatsApp et la destination souhaitée. Un conseiller Red X Travel vous contacte rapidement.</p>
+          </div>
+
+          <form id="travelForm" class="travel-form">
+            <div class="form-grid short-form-grid">
+              <label><span data-i18n="fullName">Nom & prénom *</span><input name="name" type="text" placeholder="Ex: Mohamed Amine" required></label>
+              <label><span data-i18n="phone">Numéro WhatsApp *</span><input name="phone" type="tel" placeholder="+213..." required></label>
+              <label class="full"><span data-i18n="destination">Destination souhaitée *</span><input name="destination" type="text" placeholder="Ex: Istanbul, Dubaï, Tunisie..." required></label>
+
+              <input type="hidden" name="email" value="">
+              <input type="hidden" name="serviceType" value="Demande rapide">
+              <input type="hidden" name="country" value="">
+              <input type="hidden" name="city" value="">
+              <input type="hidden" name="departureDate" value="">
+              <input type="hidden" name="returnDate" value="">
+              <input type="hidden" name="ticketType" value="">
+              <input type="hidden" name="travelers" value="Non précisé">
+              <input type="hidden" name="budget" value="">
+              <input type="hidden" name="message" value="">
+            </div>
+            <button type="submit" class="submit-btn" data-i18n="submit">Envoyer ma demande</button>
+            <p id="formStatus" class="form-status"></p>
+          </form>
+        </div>
+      </section>
+
+      
+
+<section id="offers" class="section offers-section offers-after-form">
         <div class="section-head">
           <span class="section-label" data-i18n="currentOffers">OFFRES ACTUELLES</span>
           <h2 data-i18n="offersHeading">Des offres lisibles, prêtes à comparer.</h2>
@@ -89,58 +122,6 @@
           <button id="nextOffer" class="slider-btn next" type="button" aria-label="Offre suivante">›</button>
         </div>
         <div id="offerDots" class="offer-dots"></div>
-      </section>
-
-      <section id="request" class="section request-section">
-        <div class="request-card">
-          <div class="form-head">
-            <span class="section-label" data-i18n="requestLabel">Demande personnalisée</span>
-            <h2 data-i18n="requestTitle">Recevez une proposition adaptée.</h2>
-            <p data-i18n="requestSubtitle">Indiquez votre destination, vos dates et votre budget. L’agence vous répond rapidement avec les meilleures options disponibles.</p>
-          </div>
-
-          <form id="travelForm" class="travel-form">
-            <div class="form-grid">
-              <label><span data-i18n="fullName">Nom complet *</span><input name="name" type="text" placeholder="Ex: Mohamed Amine" required></label>
-              <label><span data-i18n="phone">Téléphone / WhatsApp *</span><input name="phone" type="tel" placeholder="+213..." required></label>
-              <label><span data-i18n="email">Email</span><input name="email" type="email" placeholder="email@example.com"></label>
-              <label><span data-i18n="serviceType">Type de service *</span>
-                <select name="serviceType" required>
-                  <option value="" data-i18n="chooseService">Choisir un service</option>
-                  <option>Hôtel seulement</option>
-                  <option>Billet d’avion</option>
-                  <option>Pack voyage</option>
-                  <option>Voyage organisé</option>
-                </select>
-              </label>
-              <label><span data-i18n="country">Pays de destination *</span><input name="country" type="text" placeholder="Ex: Tunisie" required></label>
-              <label><span data-i18n="city">Ville de destination *</span><input name="city" type="text" placeholder="Ex: Sousse" required></label>
-              <label><span data-i18n="departure">Date aller</span><input name="departureDate" type="date"></label>
-              <label><span data-i18n="returnDate">Date retour</span><input name="returnDate" type="date"></label>
-              <label><span data-i18n="ticketType">Type de billet</span>
-                <select name="ticketType">
-                  <option value="" data-i18n="notSpecified">Non précisé</option>
-                  <option>Aller simple</option>
-                  <option>Aller-retour</option>
-                  <option>Multi-destinations</option>
-                </select>
-              </label>
-              <label><span data-i18n="travelers">Nombre de voyageurs</span>
-                <select name="travelers">
-                  <option>1 voyageur</option>
-                  <option>2 voyageurs</option>
-                  <option>3 voyageurs</option>
-                  <option>4 voyageurs</option>
-                  <option>5 voyageurs ou plus</option>
-                </select>
-              </label>
-              <label><span data-i18n="budget">Budget approximatif</span><input name="budget" type="text" placeholder="Ex: 100000 DA"></label>
-              <label class="full"><span data-i18n="message">Message complémentaire</span><textarea name="message" placeholder="Ajoutez les détails importants : hôtel souhaité, enfants, dates flexibles, etc."></textarea></label>
-            </div>
-            <button type="submit" class="submit-btn" data-i18n="submit">Envoyer ma demande</button>
-            <p id="formStatus" class="form-status"></p>
-          </form>
-        </div>
       </section>
 
       <section id="trust" class="section trust-section">

@@ -82,6 +82,12 @@ $("#offerDots")?.addEventListener("click",e=>{const dot=e.target.closest("[data-
 $("#travelForm")?.addEventListener("submit",async e=>{
  e.preventDefault();
  const form=e.currentTarget,btn=form.querySelector("button[type='submit']"),data=Object.fromEntries(new FormData(form).entries());
+ const destination=(data.destination||"").trim();
+ if(destination){
+  data.country=destination;
+  data.city=destination;
+  data.message=data.message || `Destination souhaitée: ${destination}`;
+ }
  data.createdAt=new Date().toISOString(); data.status="Nouveau";
  if(btn){btn.disabled=true;btn.textContent=langData().sentBtn}
  const lt=langData();
@@ -211,19 +217,19 @@ const I18N = {
   fr: {
     dir:"ltr", tagline:"Agence touristique · Alger",
     navOffers:"Offres", navRequest:"Devis", navTrust:"Pourquoi nous", navContact:"Contact",
-    heroTitle:"Des voyages premium, pensés pour vous.",
-    heroSubtitle:"Découvrez des offres sélectionnées avec soin et profitez d’un accompagnement fiable, du premier message jusqu’au départ.",
-    seeOffers:"Découvrir les offres", quoteBtn:"Demander un devis",
+    heroTitle:"Votre prochain voyage commence ici.",
+    heroSubtitle:"Envoyez une demande rapide, puis découvrez les offres disponibles. Red X Travel vous accompagne avec des propositions claires et adaptées.",
+    seeOffers:"Voir les offres", quoteBtn:"Demander un devis",
     hotels:"Séjours & hôtels", hotelsSub:"Des adresses choisies selon votre budget",
     flights:"Billets d’avion", flightsSub:"Aller simple, retour et itinéraires flexibles",
     packs:"Voyages sur mesure", packsSub:"Des programmes adaptés à chaque client",
-    currentOffers:"OFFRES ACTUELLES", offersHeading:"Des offres lisibles, prêtes à comparer.",
-    offersText:"Chaque affiche regroupe les informations essentielles. Le client consulte, choisit, puis envoie sa demande en quelques secondes.",
-    requestLabel:"Demande personnalisée", requestTitle:"Recevez une proposition adaptée.",
-    requestSubtitle:"Indiquez votre destination, vos dates et votre budget. L’agence vous répond rapidement avec les meilleures options disponibles.",
-    fullName:"Nom complet *", fullNamePh:"Ex: Mohamed Amine", phone:"Téléphone / WhatsApp *", email:"Email",
+    currentOffers:"OFFRES ACTUELLES", offersHeading:"Découvrez ensuite les offres disponibles.",
+    offersText:"Les affiches regroupent les informations essentielles pour comparer rapidement avant de confirmer votre demande.",
+    requestLabel:"Demande personnalisée", requestTitle:"Dites-nous où vous souhaitez partir.",
+    requestSubtitle:"Nom, WhatsApp et destination suffisent. Un conseiller Red X Travel vous contacte rapidement avec les meilleures options.",
+    fullName:"Nom & prénom *", fullNamePh:"Ex: Mohamed Amine", destination:"Destination souhaitée *", phone:"Numéro WhatsApp *", email:"Email",
     serviceType:"Type de service *", chooseService:"Choisir un service",
-    country:"Pays de destination *", countryPh:"Ex: Tunisie", city:"Ville de destination *", cityPh:"Ex: Sousse",
+    country:"Pays de destination *", countryPh:"Ex: Istanbul, Dubaï, Tunisie...", city:"Ville de destination *", cityPh:"Ex: Sousse",
     departure:"Date aller", returnDate:"Date retour", ticketType:"Type de billet", notSpecified:"Non précisé",
     travelers:"Nombre de voyageurs", budget:"Budget approximatif", budgetPh:"Ex: 100000 DA",
     message:"Message complémentaire", messagePh:"Ajoutez les détails importants : hôtel souhaité, enfants, dates flexibles, etc.",
@@ -247,19 +253,19 @@ const I18N = {
   en: {
     dir:"ltr", tagline:"Travel agency · Algiers",
     navOffers:"Offers", navRequest:"Quote", navTrust:"Why us", navContact:"Contact",
-    heroTitle:"Premium travel, made effortless.",
-    heroSubtitle:"Browse carefully selected offers and get reliable guidance from your first message to your departure.",
-    seeOffers:"Explore offers", quoteBtn:"Request a quote",
+    heroTitle:"Your next trip starts here.",
+    heroSubtitle:"Send a quick request, then browse the available offers. Red X Travel supports you with clear, tailored options.",
+    seeOffers:"View offers", quoteBtn:"Request a quote",
     hotels:"Stays & hotels", hotelsSub:"Selected options for every budget",
     flights:"Flight tickets", flightsSub:"One-way, return and flexible routes",
     packs:"Tailor-made trips", packsSub:"Travel plans built around each client",
-    currentOffers:"CURRENT OFFERS", offersHeading:"Clear offers, easy to compare.",
-    offersText:"Each poster includes the key details. Clients browse, compare, then send a request in seconds.",
-    requestLabel:"Personalized request", requestTitle:"Receive a tailored proposal.",
-    requestSubtitle:"Share your destination, travel dates and budget. The agency will quickly send you the best available options.",
-    fullName:"Full name *", fullNamePh:"Ex: Mohamed Amine", phone:"Phone / WhatsApp *", email:"Email",
+    currentOffers:"CURRENT OFFERS", offersHeading:"Then explore the available offers.",
+    offersText:"Each poster includes the key details, making it easy to compare before confirming your request.",
+    requestLabel:"Personalized request", requestTitle:"Tell us where you want to go.",
+    requestSubtitle:"Name, WhatsApp and destination are enough. A Red X Travel advisor will contact you shortly with the best options.",
+    fullName:"Full name *", fullNamePh:"Ex: Mohamed Amine", destination:"Desired destination *", phone:"WhatsApp number *", email:"Email",
     serviceType:"Service type *", chooseService:"Choose a service",
-    country:"Destination country *", countryPh:"Ex: Tunisia", city:"Destination city *", cityPh:"Ex: Sousse",
+    country:"Destination country *", countryPh:"Ex: Istanbul, Dubai, Tunisia...", city:"Destination city *", cityPh:"Ex: Sousse",
     departure:"Departure date", returnDate:"Return date", ticketType:"Ticket type", notSpecified:"Not specified",
     travelers:"Number of travelers", budget:"Approximate budget", budgetPh:"Ex: 100000 DZD",
     message:"Additional message", messagePh:"Add important details: preferred hotel, children, flexible dates, etc.",
@@ -283,19 +289,19 @@ const I18N = {
   ar: {
     dir:"rtl", tagline:"وكالة سياحية · الجزائر",
     navOffers:"العروض", navRequest:"طلب سعر", navTrust:"لماذا نحن", navContact:"تواصل",
-    heroTitle:"رحلات راقية… بتخطيط أسهل.",
-    heroSubtitle:"تصفّح عروضًا مختارة بعناية، واحصل على مرافقة موثوقة من أول تواصل إلى يوم السفر.",
-    seeOffers:"استعرض العروض", quoteBtn:"اطلب عرض سعر",
+    heroTitle:"رحلتك القادمة تبدأ من هنا.",
+    heroSubtitle:"أرسل طلبًا سريعًا، ثم تصفّح العروض المتاحة. فريق Red X Travel يرافقك باقتراحات واضحة ومناسبة.",
+    seeOffers:"عرض العروض", quoteBtn:"اطلب عرض سعر",
     hotels:"إقامات وفنادق", hotelsSub:"خيارات مناسبة لمختلف الميزانيات",
     flights:"تذاكر الطيران", flightsSub:"ذهاب فقط، ذهاب وعودة ومسارات مرنة",
     packs:"رحلات حسب الطلب", packsSub:"برامج سفر مصممة حسب احتياج كل عميل",
-    currentOffers:"العروض الحالية", offersHeading:"عروض واضحة وسهلة المقارنة.",
-    offersText:"كل صورة تتضمن أهم تفاصيل العرض. يمكن للعميل التصفح، المقارنة، ثم إرسال طلبه خلال ثوانٍ.",
-    requestLabel:"طلب مخصّص", requestTitle:"احصل على اقتراح يناسب رحلتك.",
-    requestSubtitle:"أرسل الوجهة، التواريخ والميزانية، وسيقترح عليك فريق الوكالة أفضل الخيارات المتاحة بسرعة.",
-    fullName:"الاسم الكامل *", fullNamePh:"مثال: محمد أمين", phone:"رقم الهاتف / واتساب *", email:"البريد الإلكتروني",
+    currentOffers:"العروض الحالية", offersHeading:"ثم تصفّح العروض المتاحة.",
+    offersText:"كل صورة تجمع أهم تفاصيل العرض لتسهيل المقارنة قبل تأكيد طلبك.",
+    requestLabel:"طلب مخصّص", requestTitle:"أخبرنا إلى أين تريد السفر.",
+    requestSubtitle:"الاسم، رقم واتساب والوجهة تكفي. سيتواصل معك مستشار من Red X Travel قريبًا بأفضل الخيارات.",
+    fullName:"الاسم واللقب *", fullNamePh:"مثال: محمد أمين", destination:"الوجهة المطلوبة *", phone:"رقم واتساب *", email:"البريد الإلكتروني",
     serviceType:"نوع الخدمة *", chooseService:"اختر الخدمة",
-    country:"بلد الوجهة *", countryPh:"مثال: تونس", city:"مدينة الوجهة *", cityPh:"مثال: سوسة",
+    country:"بلد الوجهة *", countryPh:"مثال: إسطنبول، دبي، تونس...", city:"مدينة الوجهة *", cityPh:"مثال: سوسة",
     departure:"تاريخ الذهاب", returnDate:"تاريخ العودة", ticketType:"نوع التذكرة", notSpecified:"غير محدد",
     travelers:"عدد المسافرين", budget:"الميزانية التقريبية", budgetPh:"مثال: 100000 دج",
     message:"ملاحظات إضافية", messagePh:"أضف التفاصيل المهمة: الفندق المفضل، الأطفال، مرونة التواريخ، وغيرها.",
@@ -332,7 +338,7 @@ function applyLanguage(lang){
     if(t[key]) el.textContent=t[key];
   });
   const setPH=(name,val)=>{ const el=document.querySelector(`[name="${name}"]`); if(el) el.placeholder=val; };
-  setPH("name",t.fullNamePh); setPH("country",t.countryPh); setPH("city",t.cityPh); setPH("budget",t.budgetPh);
+  setPH("name",t.fullNamePh); setPH("destination",t.countryPh); setPH("country",t.countryPh); setPH("city",t.cityPh); setPH("budget",t.budgetPh);
   const msg=document.querySelector('[name="message"]'); if(msg) msg.placeholder=t.messagePh;
   const svc=document.querySelector('[name="serviceType"] option[value=""]'); if(svc) svc.textContent=t.chooseService;
   const ticket=document.querySelector('[name="ticketType"] option[value=""]'); if(ticket) ticket.textContent=t.notSpecified;

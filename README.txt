@@ -1,8 +1,9 @@
-RED X TRAVEL V19 - RESPONSIVE BACKGROUND FIX
+RED X TRAVEL V23 - FORM FIRST
 
-Corrections:
-- Image de fond optimisée pour mobile + PC.
-- Réduction du zoom excessif sur iPhone.
-- Repositionnement plus haut pour montrer plus du visuel.
-- Adaptation responsive desktop/tablette/mobile.
-- Meilleur affichage des titres arabes.
+Changement:
+- Formulaire placé avant les offres.
+- Hero bouton principal: Demander un devis.
+- Bouton secondaire: Voir les offres.
+- Navigation: Devis avant Offres.
+- Textes FR / EN / AR adaptés à ce nouveau parcours.
+- Firebase/admin inchangés.
