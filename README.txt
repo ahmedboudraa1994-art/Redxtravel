@@ -1,9 +1,8 @@
-RED X TRAVEL V24 - HERO BACKGROUND FINAL RESPONSIVE
+RED X TRAVEL V25
 
 Correction:
-- Image hero en vrai background cover responsive.
-- Plus de coupe grise au milieu.
-- PC: cadrage cinématique centré.
-- Mobile: cadrage haut + overlay premium pour lisibilité.
-- Titres mobile ajustés pour éviter débordements.
-- RTL arabe ajusté.
+- Hero mobile élargi horizontalement.
+- Plus de monuments visibles.
+- Effet panoramique premium.
+- Texte conservé lisible.
+- Aucun changement Firebase/admin.
