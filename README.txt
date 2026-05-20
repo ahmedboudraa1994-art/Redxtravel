@@ -1,9 +1,8 @@
-RED X TRAVEL V18 - NEW HERO BACKGROUND
+RED X TRAVEL V19 - RESPONSIVE BACKGROUND FIX
 
-Changement:
-- Image de fond du hero remplacée par la nouvelle affiche Red X Travel.
-- L’image reste en arrière-plan du hero.
-- Overlay foncé conservé pour garder le texte lisible en FR / AR / EN.
-- Compatible mobile iPhone/Android et PC.
-
-Après upload GitHub, Vercel redéploie automatiquement.
+Corrections:
+- Image de fond optimisée pour mobile + PC.
+- Réduction du zoom excessif sur iPhone.
+- Repositionnement plus haut pour montrer plus du visuel.
+- Adaptation responsive desktop/tablette/mobile.
+- Meilleur affichage des titres arabes.

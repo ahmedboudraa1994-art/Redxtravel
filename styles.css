@@ -634,3 +634,59 @@ body.rtl .hero-bg{
     linear-gradient(270deg,rgba(6,27,53,.92),rgba(6,27,53,.72),rgba(6,27,53,.48)),
     url("hero-bg.jpg") center/cover no-repeat !important;
 }
+
+
+/* V19 responsive premium hero background */
+
+.hero-bg{
+  min-height:100vh;
+  background-size:cover !important;
+  background-repeat:no-repeat !important;
+  background-position:center center !important;
+}
+
+/* Desktop */
+@media(min-width:1024px){
+  .hero-bg{
+    background-size:cover !important;
+    background-position:center 22% !important;
+  }
+}
+
+/* Tablet */
+@media(min-width:768px) and (max-width:1023px){
+  .hero-bg{
+    background-size:cover !important;
+    background-position:center 18% !important;
+  }
+}
+
+/* Mobile */
+@media(max-width:767px){
+  .hero-bg{
+    background-size:140% auto !important;
+    background-position:center top !important;
+    min-height:auto !important;
+  }
+
+  .hero h1{
+    line-height:1.02 !important;
+  }
+}
+
+/* Small iPhones */
+@media(max-width:430px){
+  .hero-bg{
+    background-size:155% auto !important;
+    background-position:center top !important;
+  }
+}
+
+/* Arabic layout tuning */
+body.rtl .hero-bg{
+  background-position:center top !important;
+}
+
+body.rtl .hero h1{
+  line-height:1.15 !important;
+}
