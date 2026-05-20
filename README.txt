@@ -1,25 +1,12 @@
-RED X TRAVEL ADMIN V8 - OFFRES 100% DYNAMIQUES
+RED X TRAVEL ADMIN V10 - TRILINGUAL
 
-Changement important:
-- Les anciennes offres statiques ne s’affichent plus sur le site.
-- Le slider public affiche uniquement les offres ajoutées depuis /admin.
-- L’admin peut ajouter, classer et supprimer toutes les offres visibles.
-- Si aucune offre n’est publiée, le site affiche un message propre “Offres en préparation”.
+Ajout:
+- Sélecteur de langue FR / عربي / EN.
+- Le choix de langue est sauvegardé sur le téléphone.
+- Arabe avec direction RTL.
+- Traductions principales site public + admin.
+- Messages de confirmation traduits.
 
-Dans /admin:
-- Ajouter une offre avec photo.
-- Choisir la position: 1 = première, 2 = deuxième, etc.
-- Supprimer n’importe quelle offre publiée depuis admin.
-
-Important pour tester upload photo:
-Storage > Règles temporairement:
-rules_version = '2';
-service firebase.storage {
-  match /b/{bucket}/o {
-    match /{allPaths=**} {
-      allow read, write: if true;
-    }
-  }
-}
-
-Plus tard on sécurise avec Auth.
+Note:
+L’arabe est rédigé en arabe professionnel clair, adapté à une agence touristique.
+Plus tard on peut traduire aussi les contenus des offres ajoutées par l’admin selon la langue.

@@ -9,7 +9,8 @@
 <body>
 <header class="lux-header">
   <a href="#home" class="lux-brand"><span class="brand-mark"><img src="logo.jpg" alt="Red X Travel"></span><span class="brand-copy"><strong>Red X Travel</strong><small>Agence touristique · Alger</small></span></a>
-  <nav class="lux-nav"><a href="#offers">Offres</a><a href="#request">Demande</a><a href="#contact">Contact</a></nav>
+  <div class="language-switcher" aria-label="Language selector"><button data-lang="fr" class="active">FR</button><button data-lang="ar">عربي</button><button data-lang="en">EN</button></div>
+      <nav class="lux-nav"><a href="#offers">Offres</a><a href="#request">Demande</a><a href="#contact">Contact</a></nav>
   <a href="https://wa.me/213664719894" target="_blank" rel="noreferrer" class="nav-cta"><span class="svg-icon whatsapp-icon"></span>WhatsApp</a>
 </header>
 
@@ -140,9 +141,15 @@
     <div class="login-card">
       <span class="brand-mark large"><img src="logo.jpg" alt="Red X Travel"></span>
       <h1>Accès Admin</h1>
-      <p>Espace privé Red X Travel</p>
+      <p data-i18n="adminPrivate">Espace privé Red X Travel</p><div class="language-switcher admin-language-switcher" aria-label="Language selector"><button data-lang="fr" class="active">FR</button><button data-lang="ar">عربي</button><button data-lang="en">EN</button></div>
       <input id="adminEmail" type="email" placeholder="Email admin">
       <input id="adminPassword" type="password" placeholder="Mot de passe">
+
+      <label class="remember-login">
+        <input id="rememberAdminLogin" type="checkbox">
+        <span>Sauvegarder l’accès sur cet appareil</span>
+      </label>
+
       <button id="adminLoginBtn">Se connecter</button>
       <small>Démo : admin@redxtravel.com / redx2026</small>
     </div>

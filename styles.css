@@ -262,3 +262,107 @@
     font-size:28px;
   }
 }
+
+
+/* Admin V9 remember login */
+.remember-login{
+  display:flex !important;
+  align-items:center;
+  gap:10px;
+  margin:4px 0 14px;
+  color:#d7e3f3;
+  font-weight:850;
+  text-align:left;
+  font-size:14px;
+}
+
+.remember-login input{
+  width:18px !important;
+  height:18px !important;
+  margin:0 !important;
+  accent-color:#d8b76c;
+}
+
+.remember-login span{
+  line-height:1.35;
+}
+
+
+/* V10 language switcher */
+.language-switcher{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(14px);
+}
+
+.language-switcher button{
+  border:0;
+  border-radius:999px;
+  padding:8px 12px;
+  font-weight:950;
+  color:inherit;
+  background:transparent;
+  cursor:pointer;
+}
+
+.language-switcher button.active{
+  background:#fff;
+  color:#061b35;
+}
+
+.admin-language-switcher{
+  margin:10px 0 18px;
+  color:white;
+  justify-content:center;
+}
+
+body.rtl{
+  direction:rtl;
+  text-align:right;
+  font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Tahoma", "Arial", sans-serif;
+}
+
+body.rtl .offer-track{
+  direction:rtl;
+}
+
+body.rtl .form-row,
+body.rtl .request-details,
+body.rtl .offer-form{
+  direction:rtl;
+}
+
+body.rtl input,
+body.rtl textarea,
+body.rtl select{
+  text-align:right;
+}
+
+body.rtl .offer-info,
+body.rtl .request-main,
+body.rtl .panel-title,
+body.rtl .admin-topbar,
+body.rtl .request-actions{
+  direction:rtl;
+}
+
+body.rtl .floating-whatsapp{
+  right:auto;
+  left:22px;
+}
+
+body.rtl .lux-header{
+  direction:rtl;
+}
+
+@media(max-width:900px){
+  .language-switcher{
+    transform:scale(.92);
+    transform-origin:center;
+  }
+}
