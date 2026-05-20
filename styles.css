@@ -225,3 +225,40 @@
   font-size:13px;
   font-weight:950;
 }
+
+
+/* V8 fully dynamic offers */
+.empty-offer-card{
+  flex:0 0 min(78vw,720px);
+  padding:42px;
+  min-height:360px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:left;
+}
+
+.empty-offer-card h3{
+  font-size:34px;
+  margin:18px 0 10px;
+  letter-spacing:-.04em;
+}
+
+.empty-offer-card p{
+  color:#617084;
+  font-size:17px;
+  line-height:1.7;
+  margin:0;
+  max-width:520px;
+}
+
+@media(max-width:900px){
+  .empty-offer-card{
+    flex-basis:88vw;
+    padding:28px;
+    min-height:300px;
+  }
+  .empty-offer-card h3{
+    font-size:28px;
+  }
+}

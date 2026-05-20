@@ -1,12 +1,5 @@
 
-const fallbackOffers=[
-{title:"Hotel Tour Khalef",price:"21000 DA",image:"offer-khalef.jpg",detail:"All inclusive soft",local:true},
-{title:"Hotel Occidental Marhaba",price:"17000 DA",image:"offer-occidental-marhaba.jpg",detail:"All inclusive soft",local:true},
-{title:"Hotel Marhaba Beach",price:"13000 DA",image:"offer-marhaba-beach.jpg",detail:"Demi pension",local:true},
-{title:"El Mouradi Club Kantaoui",price:"6600 DA",image:"offer-kantaoui.jpg",detail:"All inclusive soft",local:true},
-{title:"Hotel Marabout Sousse",price:"6900 DA",image:"offer-marabout.jpg",detail:"Demi pension",local:true},
-{title:"Sol Palmeras Beach",price:"4500 DA",image:"offer-sol-palmeras.jpg",detail:"Demi pension",local:true}
-];
+const fallbackOffers=[]
 let offers=[...fallbackOffers],requestsCache=[],firebaseReady=false,firestoreDb=null,storageBucket=null,firebaseFns={},storageFns={};
 const $=s=>document.querySelector(s);
 
@@ -42,6 +35,11 @@ async function loadOffers(){
 }
 function renderOffers(){
  const track=$("#offerTrack"),dots=$("#offerDots"); if(!track||!dots)return;
+ if(!offers.length){
+  track.innerHTML=`<article class="offer-card empty-offer-card"><div><span class="section-label">Offres en préparation</span><h3>Aucune offre publiée pour le moment.</h3><p>L’agence Red X Travel ajoutera bientôt ses nouvelles offres depuis l’espace admin.</p></div></article>`;
+  dots.innerHTML="";
+  return;
+ }
  track.innerHTML=offers.map((o,i)=>`<article class="offer-card" data-index="${i}"><div class="poster"><img src="${o.image||o.imageUrl}" alt="${o.title||"Offre"}"></div><div class="offer-info"><div><h3>${o.title||"Offre Red X Travel"}</h3><small>${o.detail||"Offre publiée par l’agence"}</small></div><span class="price">${o.price?"À partir de "+o.price:"Prix sur demande"}</span></div></article>`).join("");
  dots.innerHTML=offers.map((_,i)=>`<button data-dot="${i}" aria-label="Offre ${i+1}"></button>`).join("");
  updateDots();
@@ -117,7 +115,7 @@ async function deleteOffer(id,storagePath){
 function renderAdminOffers(){
  const grid=$("#adminOffersGrid"),total=$("#totalOffers"); if(!grid)return;
  const dynamic=offers.filter(o=>!o.local); if(total)total.textContent=offers.length;
- if(!dynamic.length){grid.innerHTML=`<div class="empty-admin">Aucune offre uploadée pour le moment. Dès qu’une nouvelle offre est ajoutée ici, elle remplace les offres de démonstration sur le site.</div>`;return}
+ if(!dynamic.length){grid.innerHTML=`<div class="empty-admin">Aucune offre publiée pour le moment. Ajoutez la première offre avec une photo pour l’afficher sur le site.</div>`;return}
  grid.innerHTML=dynamic.map(o=>`<div class="admin-offer-card"><img src="${o.image||o.imageUrl}" alt="${o.title||"Offre"}"><div><h3>${o.title||"Offre"}</h3><p>${o.detail||""}</p><strong>${o.price||"Prix sur demande"}</strong><span class="order-badge">Position ${o.order||"-"}</span><button class="danger-btn full" data-delete-offer="${o.id}" data-storage-path="${o.storagePath||""}">Supprimer l’offre</button></div></div>`).join("");
 }
 function showAdminLogin(){
