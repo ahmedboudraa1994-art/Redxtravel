@@ -9,7 +9,13 @@
 <body>
   <div class="language-switcher"><button type="button" data-lang="fr" class="active">FR</button><button type="button" data-lang="ar">عربي</button><button type="button" data-lang="en">EN</button></div>
 <header class="lux-header">
-  <a href="#home" class="lux-brand"><span class="brand-mark"><img src="logo.jpg" alt="Red X Travel"></span><span class="brand-copy"><strong>Red X Travel</strong><small data-i18n="tagline">Agence touristique · Alger</small></span></a>
+  <a href="#home" class="lux-brand"><span class="brand-mark"><img src="logo.jpg" alt="Red X Travel">
+        <div class="header-language-switcher" aria-label="Sélecteur de langue">
+          <button type="button" data-lang="fr" class="active">FR</button>
+          <button type="button" data-lang="ar">عربي</button>
+          <button type="button" data-lang="en">EN</button>
+        </div>
+</span><span class="brand-copy"><strong>Red X Travel</strong><small data-i18n="tagline">Agence touristique · Alger</small></span></a>
   <nav class="lux-nav"><a href="#offers" data-i18n="adminOffers">Offres</a><a href="#request">Demande</a><a href="#contact" data-i18n="contact">Contact</a></nav>
   <a href="https://wa.me/213664719894" target="_blank" rel="noreferrer" class="nav-cta"><span class="svg-icon whatsapp-icon"></span>WhatsApp</a>
 </header>
@@ -20,13 +26,13 @@
   <div class="hero-grid">
     <div class="hero-copy">
       <span class="pill">Red X Travel · Ouled Fayet, Alger</span>
-      <h1 data-i18n="heroTitle">Des voyages mieux pensés, des offres plus claires.</h1>
-      <p data-i18n="heroSubtitle">Découvrez les meilleures offres publiées par l’agence, puis envoyez une demande personnalisée selon votre destination, vos dates et votre budget.</p>
-      <div class="hero-actions"><a href="#offers" class="btn gold" data-i18n="seeOffers">Voir les offres</a><a href="#request" class="btn glass" data-i18n="quoteBtn">Demander un devis</a></div>
+      <h1 data-i18n="heroTitle">Des voyages premium, pensés pour vous.</h1>
+      <p data-i18n="heroSubtitle">Découvrez des offres sélectionnées avec soin et profitez d’un accompagnement fiable, du premier message jusqu’au départ.</p>
+      <div class="hero-actions"><a href="#offers" class="btn gold" data-i18n="seeOffers">Découvrir les offres</a><a href="#request" class="btn glass" data-i18n="quoteBtn">Demander un devis</a></div>
       <div class="hero-metrics">
-        <div><strong data-i18n="hotels">Hôtels</strong><span data-i18n="hotelsSub">Séjours, demi-pension, all inclusive</span></div>
-        <div><strong data-i18n="flights">Vols</strong><span data-i18n="flightsSub">Aller simple, retour, multi-vols</span></div>
-        <div><strong data-i18n="packs">Packs</strong><span data-i18n="packsSub">Voyages organisés et sur mesure</span></div>
+        <div><strong data-i18n="hotels">Séjours & hôtels</strong><span data-i18n="hotelsSub">Des adresses choisies selon votre budget</span></div>
+        <div><strong data-i18n="flights">Billets d’avion</strong><span data-i18n="flightsSub">Aller simple, retour et itinéraires flexibles</span></div>
+        <div><strong data-i18n="packs">Voyages sur mesure</strong><span data-i18n="packsSub">Des programmes adaptés à chaque client</span></div>
       </div>
     </div>
     <div class="hero-card"><span>Offre mise en avant</span><img src="offer-khalef.jpg" alt="Hotel Tour Khalef"><div><strong>Hotel Tour Khalef</strong><small>All inclusive soft · À partir de 21000 DA</small></div></div>
@@ -34,7 +40,7 @@
 </section>
 
 <section id="offers" class="offers">
-  <div class="section-top"><div><span class="section-label" data-i18n="currentOffers">Offres actuelles</span><h2 data-i18n="offersHeading">Affiches claires, navigation fluide.</h2></div><p data-i18n="offersText">Les photos contiennent déjà les détails de chaque offre. Le client peut faire défiler, comparer, puis descendre au formulaire.</p></div>
+  <div class="section-top"><div><span class="section-label" data-i18n="currentOffers">Offres actuelles</span><h2 data-i18n="offersHeading">Des offres lisibles, prêtes à comparer.</h2></div><p data-i18n="offersText">Chaque affiche regroupe les informations essentielles. Le client consulte, choisit, puis envoie sa demande en quelques secondes.</p></div>
   <div class="lux-slider"><button class="slider-control left" id="prevOffer"><span class="svg-icon arrow-left-icon"></span></button><div class="offer-track" id="offerTrack"></div><button class="slider-control right" id="nextOffer"><span class="svg-icon arrow-right-icon"></span></button></div>
   <div class="offer-progress" id="offerDots"></div>
 </section>
@@ -43,8 +49,8 @@
 <section id="request" class="request">
   <div class="request-head">
     <span class="section-label" data-i18n="requestLabel">Demande personnalisée</span>
-    <h2 data-i18n="requestTitle">Demandez votre devis voyage.</h2>
-    <p data-i18n="requestSubtitle">Remplissez les informations essentielles. L’équipe Red X Travel vous contactera rapidement avec une proposition adaptée.</p>
+    <h2 data-i18n="requestTitle">Recevez une proposition adaptée.</h2>
+    <p data-i18n="requestSubtitle">Indiquez votre destination, vos dates et votre budget. L’agence vous répond rapidement avec les meilleures options disponibles.</p>
   </div>
 
   <form id="travelForm" class="premium-form agency-form">
