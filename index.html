@@ -38,25 +38,90 @@
   <div class="offer-progress" id="offerDots"></div>
 </section>
 
+
 <section id="request" class="request">
-  <div class="request-panel">
-    <div class="request-intro">
-      <span class="section-label">Demande de devis</span><h2>Le client choisit sa destination.</h2>
-      <p>Le formulaire reste séparé des photos. Après avoir consulté les offres, le client écrit lui-même le pays, la ville, les dates et son numéro.</p>
-      <div class="process"><div><span>01</span><strong>Consulter les offres</strong><small>Slider horizontal mobile-first</small></div><div><span>02</span><strong>Remplir le formulaire</strong><small>Destination, dates, type de service</small></div><div><span>03</span><strong>Contact agence</strong><small>Réponse rapide téléphone/WhatsApp</small></div></div>
+  <div class="request-head">
+    <span class="section-label">Demande personnalisée</span>
+    <h2>Demandez votre devis voyage.</h2>
+    <p>Remplissez les informations essentielles. L’équipe Red X Travel vous contactera rapidement avec une proposition adaptée.</p>
+  </div>
+
+  <form id="travelForm" class="premium-form agency-form">
+    <div class="form-row">
+      <label>Nom complet *
+        <input name="name" type="text" placeholder="Ex: Mohamed Amine" required>
+      </label>
+      <label>Téléphone / WhatsApp *
+        <input name="phone" type="tel" placeholder="+213 ..." required>
+      </label>
     </div>
 
-    <form id="travelForm" class="premium-form">
-      <div class="form-row"><label>Nom complet *<input name="name" type="text" placeholder="Ex: Mohamed Amine" required></label><label>Téléphone / WhatsApp *<input name="phone" type="tel" placeholder="+213 ..." required></label></div>
-      <div class="form-row"><label>Email<input name="email" type="email" placeholder="exemple@email.com"></label><label>Type de service *<select name="serviceType" required><option value="">Choisir un service</option><option>Voyage organisé</option><option>Pack vacances</option><option>Hôtel seulement</option><option>Billet d’avion</option><option>Omra</option><option>Autre</option></select></label></div>
-      <div class="form-row"><label>Pays de destination *<input name="country" type="text" placeholder="Ex: Tunisie" required></label><label>Ville de destination *<input name="city" type="text" placeholder="Ex: Sousse" required></label></div>
-      <div class="form-row"><label>Date aller<input name="departureDate" type="date"></label><label>Date retour<input name="returnDate" type="date"></label></div>
-      <div class="form-row"><label>Type de billet<select name="ticketType"><option value="">Non précisé</option><option>Aller-retour</option><option>Aller simple</option><option>Multiples vols</option></select></label><label>Nombre de voyageurs<select name="travelers"><option>1 voyageur</option><option>2 voyageurs</option><option>3 voyageurs</option><option>4 voyageurs</option><option>5+ voyageurs</option></select></label></div>
-      <label>Budget approximatif<input name="budget" type="text" placeholder="Ex: 100000 DA"></label>
-      <label>Message complémentaire<textarea name="message" placeholder="Ajoutez les détails importants : hôtel souhaité, enfants, dates flexibles, etc."></textarea></label>
-      <button type="submit" class="submit-lux">Envoyer ma demande</button><p id="formStatus" class="form-status"></p>
-    </form>
-  </div>
+    <div class="form-row">
+      <label>Email
+        <input name="email" type="email" placeholder="exemple@email.com">
+      </label>
+      <label>Type de service *
+        <select name="serviceType" required>
+          <option value="">Choisir un service</option>
+          <option>Voyage organisé</option>
+          <option>Pack vacances</option>
+          <option>Hôtel seulement</option>
+          <option>Billet d’avion</option>
+          <option>Omra</option>
+          <option>Autre</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="form-row">
+      <label>Pays de destination *
+        <input name="country" type="text" placeholder="Ex: Tunisie" required>
+      </label>
+      <label>Ville de destination *
+        <input name="city" type="text" placeholder="Ex: Sousse" required>
+      </label>
+    </div>
+
+    <div class="form-row">
+      <label>Date aller
+        <input name="departureDate" type="date">
+      </label>
+      <label>Date retour
+        <input name="returnDate" type="date">
+      </label>
+    </div>
+
+    <div class="form-row">
+      <label>Type de billet
+        <select name="ticketType">
+          <option value="">Non précisé</option>
+          <option>Aller-retour</option>
+          <option>Aller simple</option>
+          <option>Multiples vols</option>
+        </select>
+      </label>
+      <label>Nombre de voyageurs
+        <select name="travelers">
+          <option>1 voyageur</option>
+          <option>2 voyageurs</option>
+          <option>3 voyageurs</option>
+          <option>4 voyageurs</option>
+          <option>5+ voyageurs</option>
+        </select>
+      </label>
+    </div>
+
+    <label>Budget approximatif
+      <input name="budget" type="text" placeholder="Ex: 100000 DA">
+    </label>
+
+    <label>Message complémentaire
+      <textarea name="message" placeholder="Ajoutez les détails importants : hôtel souhaité, enfants, dates flexibles, etc."></textarea>
+    </label>
+
+    <button type="submit" class="submit-lux">Envoyer ma demande</button>
+    <p id="formStatus" class="form-status"></p>
+  </form>
 </section>
 
 <section id="contact" class="contact">

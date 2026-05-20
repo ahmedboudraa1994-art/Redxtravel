@@ -1,3 +1,12 @@
-RED X TRAVEL LUXURY V3
-Version premium moderne. Upload tous les fichiers à la racine GitHub, puis Vercel redéploie.
-Admin demo: admin@redxtravel.com / redx2026
+RED X TRAVEL AGENCY V4
+
+Changements:
+- Suppression de la partie inutile 01/02/03 dans le formulaire.
+- Formulaire centré, propre et plus professionnel.
+- Améliorations desktop + responsive iPhone/Android.
+- Offres conservées en slider.
+- Contact premium conservé.
+- Admin /admin conservé.
+
+Déploiement:
+Remplacer les fichiers dans GitHub, puis Vercel redéploie automatiquement.
