@@ -596,3 +596,14 @@ body.rtl .admin-dashboard aside button{text-align:right}
     max-width:430px;
   }
 }
+
+
+/* V17 logout reliability */
+#logoutBtn{
+  cursor:pointer !important;
+  touch-action:manipulation !important;
+  -webkit-tap-highlight-color:transparent;
+}
+#logoutBtn:active{
+  transform:scale(.99);
+}

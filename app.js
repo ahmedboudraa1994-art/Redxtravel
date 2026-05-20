@@ -1,4 +1,28 @@
 
+/* V17 robust logout handler - runs before all other app code */
+document.addEventListener("click", function(event){
+  const logoutButton = event.target.closest && event.target.closest("#logoutBtn");
+  if(!logoutButton) return;
+
+  event.preventDefault();
+  event.stopPropagation();
+  event.stopImmediatePropagation();
+
+  try{
+    sessionStorage.removeItem("redx_admin_session");
+    sessionStorage.removeItem("redx_admin_logged_in");
+    localStorage.removeItem("redx_admin_remember");
+    localStorage.removeItem("redx_admin_email");
+    localStorage.removeItem("redx_admin_password");
+    localStorage.removeItem("redx_admin_remember");
+    localStorage.removeItem("redx_admin_email");
+    localStorage.removeItem("redx_admin_password");
+  }catch(e){}
+
+  window.location.replace("/admin-login");
+}, true);
+
+
 const fallbackOffers=[]
 let offers=[...fallbackOffers],requestsCache=[],firebaseReady=false,firestoreDb=null,storageBucket=null,firebaseFns={},storageFns={};
 const $=s=>document.querySelector(s);

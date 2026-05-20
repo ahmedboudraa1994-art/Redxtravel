@@ -1,16 +1,13 @@
-RED X TRAVEL V16 - SEPARATED ADMIN
+RED X TRAVEL V17 - LOGOUT FIXED
 
-Nouveautés sécurité côté accès:
-- /admin-login = page connexion seulement.
-- /admin = dashboard seulement.
-- Si /admin est ouvert sans session valide: redirection automatique vers /admin-login.
-- Login réussi: redirection vers /admin.
-- Déconnexion: session supprimée + accès sauvegardé supprimé + retour vers /admin-login.
-- Le dashboard n’est plus sur la même page que le formulaire de connexion.
+Correction:
+- Déconnexion admin corrigée avec handler global robuste.
+- Clic/tap iPhone capté même si d'autres scripts bloquent.
+- Supprime session admin + accès sauvegardé.
+- Redirection forcée vers /admin-login.
 
-Important:
-Cette version améliore fortement l’expérience et la séparation côté interface.
-Pour une vraie sécurité complète, il faudra ensuite:
-1. Firebase Authentication,
-2. règles Firestore/Storage avec request.auth,
-3. ne plus stocker le mot de passe admin dans le frontend.
+Tester:
+1. Ouvrir /admin
+2. Cliquer Déconnexion
+3. Doit retourner directement vers /admin-login
+4. Réouvrir /admin doit renvoyer vers /admin-login si non connecté
