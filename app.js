@@ -165,41 +165,13 @@ function showAdminIfNeeded(){
  }
  showAdminLogin();
 }
-$("#adminLoginBtn")?.addEventListener("click",async()=>{
- const email=$("#adminEmail").value.trim(),password=$("#adminPassword").value.trim(),admin=window.REDX_ADMIN||{};
- if(email===admin.email&&password===admin.password){
-   sessionStorage.setItem("redx_admin_logged_in","true");
 
-   if($("#rememberAdminLogin")?.checked){
-     localStorage.setItem("redx_admin_remember","true");
-     localStorage.setItem("redx_admin_email",email);
-     localStorage.setItem("redx_admin_password",password);
-   }else{
-     localStorage.removeItem("redx_admin_remember");
-     localStorage.removeItem("redx_admin_email");
-     localStorage.removeItem("redx_admin_password");
-   }
-
-   await showAdminDashboard();
- }else{
-   alert("Email ou mot de passe incorrect.");
- }
-});
 
 $("#adminPassword")?.addEventListener("keydown",async(e)=>{
  if(e.key==="Enter") $("#adminLoginBtn")?.click();
 });
 
-$("#logoutBtn")?.addEventListener("click",()=>{
- sessionStorage.removeItem("redx_admin_logged_in");
- localStorage.removeItem("redx_admin_remember");
- localStorage.removeItem("redx_admin_email");
- localStorage.removeItem("redx_admin_password");
- if($("#adminEmail")) $("#adminEmail").value="";
- if($("#adminPassword")) $("#adminPassword").value="";
- if($("#rememberAdminLogin")) $("#rememberAdminLogin").checked=false;
- showAdminLogin();
-});
+
 document.querySelectorAll("[data-panel]").forEach(b=>b.addEventListener("click",async()=>{
  document.querySelectorAll("[data-panel]").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.querySelectorAll(".admin-panel").forEach(p=>p.hidden=true);$("#"+b.dataset.panel).hidden=false;
  if(b.dataset.panel==="requestsPanel")await loadRequests(); if(b.dataset.panel==="offersPanel")await loadOffers();
@@ -363,3 +335,112 @@ document.querySelectorAll(".mobile-menu a").forEach(a=>a.addEventListener("click
 setTimeout(()=>applyLanguage(localStorage.getItem("redx_lang") || "fr"),40);
 
 await initFirebase();await loadOffers();showAdminIfNeeded();
+
+
+/* V16 separated admin security flow */
+const ADMIN_SESSION_KEY = "redx_admin_session";
+const ADMIN_REMEMBER_KEY = "redx_admin_remember";
+const ADMIN_EMAIL_KEY = "redx_admin_email";
+const ADMIN_PASSWORD_KEY = "redx_admin_password";
+
+function isAdminPath(){
+  return location.pathname === "/admin" || location.pathname.endsWith("/admin.html");
+}
+function isAdminLoginPath(){
+  return location.pathname === "/admin-login" || location.pathname.endsWith("/admin-login.html");
+}
+function adminLoginUrl(){
+  return "/admin-login";
+}
+function adminDashboardUrl(){
+  return "/admin";
+}
+function isSessionValid(){
+  return sessionStorage.getItem(ADMIN_SESSION_KEY) === "active";
+}
+function hasRememberedAdmin(){
+  const admin = window.REDX_ADMIN || {};
+  const remembered = localStorage.getItem(ADMIN_REMEMBER_KEY) === "true";
+  const email = localStorage.getItem(ADMIN_EMAIL_KEY) || "";
+  const password = localStorage.getItem(ADMIN_PASSWORD_KEY) || "";
+  return remembered && email === admin.email && password === admin.password;
+}
+function activateAdminSession(){
+  sessionStorage.setItem(ADMIN_SESSION_KEY, "active");
+  sessionStorage.setItem("redx_admin_logged_in", "true");
+}
+function clearAdminSession(){
+  sessionStorage.removeItem(ADMIN_SESSION_KEY);
+  sessionStorage.removeItem("redx_admin_logged_in");
+}
+function clearRememberedAdmin(){
+  localStorage.removeItem(ADMIN_REMEMBER_KEY);
+  localStorage.removeItem(ADMIN_EMAIL_KEY);
+  localStorage.removeItem(ADMIN_PASSWORD_KEY);
+  localStorage.removeItem("redx_admin_remember");
+  localStorage.removeItem("redx_admin_email");
+  localStorage.removeItem("redx_admin_password");
+}
+function fillRememberedLogin(){
+  const saved = localStorage.getItem(ADMIN_REMEMBER_KEY) === "true";
+  const email = localStorage.getItem(ADMIN_EMAIL_KEY) || "";
+  const password = localStorage.getItem(ADMIN_PASSWORD_KEY) || "";
+  if($("#rememberAdminLogin")) $("#rememberAdminLogin").checked = saved;
+  if(saved && $("#adminEmail")) $("#adminEmail").value = email;
+  if(saved && $("#adminPassword")) $("#adminPassword").value = password;
+}
+
+async function bootSeparatedAdmin(){
+  if(isAdminLoginPath()){
+    fillRememberedLogin();
+    if(hasRememberedAdmin()){
+      activateAdminSession();
+      location.replace(adminDashboardUrl());
+      return;
+    }
+  }
+
+  if(isAdminPath()){
+    if(!isSessionValid() && !hasRememberedAdmin()){
+      location.replace(adminLoginUrl());
+      return;
+    }
+    activateAdminSession();
+    await loadRequests();
+    await loadOffers();
+  }
+}
+
+setTimeout(bootSeparatedAdmin, 80);
+
+$("#adminLoginBtn")?.addEventListener("click", async ()=>{
+  const email = $("#adminEmail")?.value.trim() || "";
+  const password = $("#adminPassword")?.value.trim() || "";
+  const admin = window.REDX_ADMIN || {};
+
+  if(email === admin.email && password === admin.password){
+    activateAdminSession();
+
+    if($("#rememberAdminLogin")?.checked){
+      localStorage.setItem(ADMIN_REMEMBER_KEY, "true");
+      localStorage.setItem(ADMIN_EMAIL_KEY, email);
+      localStorage.setItem(ADMIN_PASSWORD_KEY, password);
+    }else{
+      clearRememberedAdmin();
+    }
+
+    location.replace(adminDashboardUrl());
+  }else{
+    alert("Email ou mot de passe incorrect.");
+  }
+});
+
+$("#adminPassword")?.addEventListener("keydown", (e)=>{
+  if(e.key === "Enter") $("#adminLoginBtn")?.click();
+});
+
+$("#logoutBtn")?.addEventListener("click", ()=>{
+  clearAdminSession();
+  clearRememberedAdmin();
+  location.replace(adminLoginUrl());
+});

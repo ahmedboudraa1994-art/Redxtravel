@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Dashboard Admin — Red X Travel</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="admin-only-page">
+  <section id="adminDashboardPage" class="admin-site">
+    <div id="adminDashboard" class="admin-dashboard">
+      <aside>
+        <div class="admin-brand">
+          <span class="brand-mark small"><img src="logo.jpg" alt="Red X Travel"></span>
+          <strong>Red X Travel</strong>
+        </div>
+        <button class="active" data-panel="requestsPanel" data-i18n="adminRequests">Demandes</button>
+        <button data-panel="offersPanel" data-i18n="adminOffers">Offres</button>
+        <button id="logoutBtn" data-i18n="logout">Déconnexion</button>
+      </aside>
+
+      <div class="admin-content">
+        <div class="admin-topbar">
+          <div>
+            <h1 data-i18n="dashboard">Tableau de bord</h1>
+            <p data-i18n="dashboardSub">Gérez les demandes clients et les offres depuis votre téléphone.</p>
+          </div>
+        </div>
+
+        <div class="admin-stats">
+          <div><strong id="totalRequests">0</strong><span data-i18n="requestsStat">Demandes reçues</span></div>
+          <div><strong id="totalOffers">0</strong><span data-i18n="offersStat">Offres publiées</span></div>
+        </div>
+
+        <div id="requestsPanel" class="admin-panel">
+          <div class="panel-title">
+            <div>
+              <h2 data-i18n="requestsTitle">Demandes clients</h2>
+              <p data-i18n="requestsSub">Consultez, changez le statut ou supprimez les demandes traitées.</p>
+            </div>
+            <button id="refreshRequestsBtn" class="admin-secondary-btn" data-i18n="refresh">Actualiser</button>
+          </div>
+          <div id="requestsList" class="requests-list"></div>
+        </div>
+
+        <div id="offersPanel" class="admin-panel" hidden>
+          <div class="panel-title">
+            <div>
+              <h2 data-i18n="offersManage">Gestion des offres</h2>
+              <p data-i18n="offersManageSub">Ajoutez une nouvelle affiche ou supprimez une ancienne offre.</p>
+            </div>
+          </div>
+
+          <form id="offerForm" class="offer-form">
+            <label><span data-i18n="offerTitle">Titre de l’offre *</span><input name="title" type="text" placeholder="Ex: Hotel Tour Khalef" required></label>
+            <label><span data-i18n="offerDetail">Détail / formule</span><input name="detail" type="text" placeholder="Ex: All inclusive soft"></label>
+            <label><span data-i18n="offerPrice">Prix</span><input name="price" type="text" placeholder="Ex: 21000 DA"></label>
+            <label><span data-i18n="offerOrder">Position d’affichage</span><input name="order" type="number" min="1" placeholder="1 = première offre"></label>
+            <label class="full-field"><span data-i18n="offerPhoto">Photo de l’offre *</span><input name="image" type="file" accept="image/*" required></label>
+            <button type="submit" id="addOfferBtn" data-i18n="addOffer">Ajouter l’offre</button>
+            <p id="offerStatus" class="offer-status"></p>
+          </form>
+
+          <div id="adminOffersGrid" class="admin-offers-grid enhanced"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="firebase-config.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

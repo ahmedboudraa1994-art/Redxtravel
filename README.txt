@@ -1,16 +1,16 @@
-RED X TRAVEL V15 CLEAN REBUILD
+RED X TRAVEL V16 - SEPARATED ADMIN
 
-Version propre:
-- CSS reconstruit sans accumulation des anciennes versions.
-- Header mobile/desktop propre.
-- Sélecteur de langues intégré correctement.
-- Menu hamburger mobile.
-- Hero premium.
-- Traductions FR / EN / AR centralisées.
-- RTL arabe amélioré.
-- Section confiance ajoutée.
-- Footer/contact plus professionnel.
-- Admin conservé: demandes, offres, upload, suppression, remember access.
+Nouveautés sécurité côté accès:
+- /admin-login = page connexion seulement.
+- /admin = dashboard seulement.
+- Si /admin est ouvert sans session valide: redirection automatique vers /admin-login.
+- Login réussi: redirection vers /admin.
+- Déconnexion: session supprimée + accès sauvegardé supprimé + retour vers /admin-login.
+- Le dashboard n’est plus sur la même page que le formulaire de connexion.
 
 Important:
-Les règles Firebase restent à sécuriser plus tard avec Auth.
+Cette version améliore fortement l’expérience et la séparation côté interface.
+Pour une vraie sécurité complète, il faudra ensuite:
+1. Firebase Authentication,
+2. règles Firestore/Storage avec request.auth,
+3. ne plus stocker le mot de passe admin dans le frontend.

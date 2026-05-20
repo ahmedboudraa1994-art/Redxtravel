@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Accès Admin — Red X Travel</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="admin-only-page">
+  <section id="adminLoginPage" class="admin-login-page">
+    <div id="adminLogin" class="admin-login">
+      <div class="login-card secure-login-card">
+        <span class="brand-mark large"><img src="logo.jpg" alt="Red X Travel"></span>
+        <h1 data-i18n="loginTitle">Accès Admin</h1>
+        <p data-i18n="adminPrivate">Espace privé Red X Travel</p>
+
+        <div class="admin-language-switcher" aria-label="Sélecteur de langue">
+          <button type="button" data-lang="fr" class="active">FR</button>
+          <button type="button" data-lang="ar">عربي</button>
+          <button type="button" data-lang="en">EN</button>
+        </div>
+
+        <input id="adminEmail" type="email" placeholder="Email admin" autocomplete="username">
+        <input id="adminPassword" type="password" placeholder="Mot de passe" autocomplete="current-password">
+
+        <label class="remember-login">
+          <input id="rememberAdminLogin" type="checkbox">
+          <span data-i18n="saveAccess">Sauvegarder l’accès sur cet appareil</span>
+        </label>
+
+        <button id="adminLoginBtn" data-i18n="loginBtn">Se connecter</button>
+        <small class="secure-note">Connexion réservée à l’agence.</small>
+      </div>
+    </div>
+  </section>
+
+  <script src="firebase-config.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
