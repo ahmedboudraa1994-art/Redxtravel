@@ -31,7 +31,11 @@ async function loadOffers(){
  try{
   const q=firebaseFns.query(firebaseFns.collection(firestoreDb,"offers"),firebaseFns.orderBy("createdAt","desc"));
   const snap=await firebaseFns.getDocs(q);
-  const dynamic=snap.docs.map(d=>({id:d.id,...d.data()}));
+  const dynamic=snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>{
+   const ao=Number(a.order||9999), bo=Number(b.order||9999);
+   if(ao!==bo) return ao-bo;
+   return String(b.createdAt||"").localeCompare(String(a.createdAt||""));
+  });
   offers=dynamic.length?dynamic:[...fallbackOffers];
  }catch(e){console.warn(e);offers=[...fallbackOffers]}
  renderOffers();renderAdminOffers();
@@ -97,7 +101,7 @@ $("#offerForm")?.addEventListener("submit",async e=>{
   const safe=file.name.replace(/[^a-zA-Z0-9._-]/g,"-"),storagePath=`offers/${Date.now()}-${safe}`,fileRef=storageFns.ref(storageBucket,storagePath);
   await storageFns.uploadBytes(fileRef,file);
   const imageUrl=await storageFns.getDownloadURL(fileRef);
-  await firebaseFns.addDoc(firebaseFns.collection(firestoreDb,"offers"),{title:data.title||"",detail:data.detail||"",price:data.price||"",image:imageUrl,imageUrl,storagePath,createdAt:new Date().toISOString()});
+  await firebaseFns.addDoc(firebaseFns.collection(firestoreDb,"offers"),{title:data.title||"",detail:data.detail||"",price:data.price||"",order:Number(data.order||9999),image:imageUrl,imageUrl,storagePath,createdAt:new Date().toISOString()});
   form.reset();status.textContent="Offre ajoutée avec succès.";await loadOffers();
  }catch(err){console.error(err);status.textContent="Erreur pendant l’ajout. Vérifiez les règles Storage."}
  finally{btn.disabled=false;btn.textContent="Ajouter l’offre"}
@@ -113,8 +117,8 @@ async function deleteOffer(id,storagePath){
 function renderAdminOffers(){
  const grid=$("#adminOffersGrid"),total=$("#totalOffers"); if(!grid)return;
  const dynamic=offers.filter(o=>!o.local); if(total)total.textContent=offers.length;
- if(!dynamic.length){grid.innerHTML=`<div class="empty-admin">Aucune offre dynamique pour le moment. Les offres actuelles restent affichées par défaut.</div>`;return}
- grid.innerHTML=dynamic.map(o=>`<div class="admin-offer-card"><img src="${o.image||o.imageUrl}" alt="${o.title||"Offre"}"><div><h3>${o.title||"Offre"}</h3><p>${o.detail||""}</p><strong>${o.price||"Prix sur demande"}</strong><button class="danger-btn full" data-delete-offer="${o.id}" data-storage-path="${o.storagePath||""}">Supprimer l’offre</button></div></div>`).join("");
+ if(!dynamic.length){grid.innerHTML=`<div class="empty-admin">Aucune offre uploadée pour le moment. Dès qu’une nouvelle offre est ajoutée ici, elle remplace les offres de démonstration sur le site.</div>`;return}
+ grid.innerHTML=dynamic.map(o=>`<div class="admin-offer-card"><img src="${o.image||o.imageUrl}" alt="${o.title||"Offre"}"><div><h3>${o.title||"Offre"}</h3><p>${o.detail||""}</p><strong>${o.price||"Prix sur demande"}</strong><span class="order-badge">Position ${o.order||"-"}</span><button class="danger-btn full" data-delete-offer="${o.id}" data-storage-path="${o.storagePath||""}">Supprimer l’offre</button></div></div>`).join("");
 }
 function showAdminLogin(){
  const login=$("#adminLogin"),dashboard=$("#adminDashboard");

@@ -208,3 +208,20 @@
 #logoutBtn:hover{
   background:rgba(239,68,68,.22) !important;
 }
+
+
+/* Admin V7 offer order */
+.offer-form .full-field{
+  grid-column:1/-1;
+}
+
+.order-badge{
+  display:inline-block;
+  margin-top:10px;
+  padding:8px 10px;
+  border-radius:999px;
+  background:#eef6ff;
+  color:#0b4f8c;
+  font-size:13px;
+  font-weight:950;
+}
