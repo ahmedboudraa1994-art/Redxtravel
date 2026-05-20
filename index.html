@@ -3,232 +3,234 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Red X Travel - Agence de voyage</title>
-  <meta name="description" content="Red X Travel - Offres de voyages, hôtels, billets d'avion et packs touristiques en Algérie." />
+  <title>Red X Travel | Agence de voyage à Alger</title>
+  <meta name="description" content="Red X Travel, agence de voyage à Ouled Fayet Alger. Séjours, hôtels, billets d’avion, packs vacances et voyages organisés." />
   <link rel="icon" href="logo.jpg" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div id="publicSite">
-    <header class="navbar">
-      <a class="brand" href="#home" aria-label="Red X Travel">
-        <img src="logo.jpg" alt="Logo Red X Travel" />
-        <div>
-          <strong>Red X Travel</strong>
-          <span>Voyagez, découvrez, vivez</span>
+  <header class="site-header">
+    <a class="brand" href="#home">
+      <span class="logo-frame"><img src="logo.jpg" alt="Red X Travel"></span>
+      <span>
+        <strong>Red X Travel</strong>
+        <small>Travel Agency · Algeria</small>
+      </span>
+    </a>
+
+    <nav class="desktop-nav">
+      <a href="#home">Accueil</a>
+      <a href="#offers">Offres</a>
+      <a href="#request">Devis</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <a class="header-contact" href="https://wa.me/213664719894" target="_blank" rel="noreferrer">
+      <span class="icon phone-icon"></span>
+      WhatsApp
+    </a>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-shade"></div>
+      <div class="hero-inner">
+        <p class="overline">Agence touristique à Ouled Fayet, Alger</p>
+        <h1>Voyagez avec confiance, découvrez autrement.</h1>
+        <p class="lead">Offres hôtelières, packs vacances, billets d’avion et voyages organisés avec un accompagnement rapide et professionnel.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#offers">Voir nos offres</a>
+          <a class="btn btn-ghost" href="#request">Demander un devis</a>
         </div>
-      </a>
-      <nav>
-        <a href="#home">Accueil</a>
-        <a href="#offers">Nos offres</a>
-        <a href="#request">Demande</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <a class="whatsappTop" href="https://wa.me/213664719894" target="_blank" rel="noreferrer">WhatsApp</a>
-    </header>
-
-    <main>
-      <section id="home" class="hero">
-        <div class="heroOverlay"></div>
-        <div class="heroContent">
-          <p class="eyebrow">Agence de voyage · Ouled Fayet, Alger</p>
-          <h1>Voyagez vers <span>vos rêves</span></h1>
-          <p class="heroText">Séjours, hôtels, billets d’avion et packs touristiques. Red X Travel vous accompagne pour trouver l’offre idéale.</p>
-          <div class="heroActions">
-            <a class="primaryBtn" href="#offers">Voir nos offres ↓</a>
-            <a class="secondaryBtn" href="https://wa.me/213664719894" target="_blank" rel="noreferrer">Nous contacter</a>
-          </div>
-        </div>
-      </section>
-
-      <section id="offers" class="offersSection">
-        <div class="sectionTitle">
-          <h2>Nos Offres ✈️</h2>
-          <p>Faites défiler les photos à gauche ou à droite pour découvrir les offres actuelles.</p>
-        </div>
-
-        <div class="sliderWrap">
-          <button class="sliderBtn left" id="prevOffer" aria-label="Offre précédente">‹</button>
-          <div class="offersSlider" id="offersSlider"></div>
-          <button class="sliderBtn right" id="nextOffer" aria-label="Offre suivante">›</button>
-        </div>
-        <div class="dots" id="offerDots"></div>
-      </section>
-
-      <section id="request" class="requestSection">
-        <div class="formHeader">
-          <h2>Demandez votre devis ✈️</h2>
-          <p>Remplissez le formulaire et l’agence vous contactera rapidement.</p>
-        </div>
-
-        <form id="travelForm" class="travelForm">
-          <div class="field">
-            <label>Nom complet *</label>
-            <input name="name" type="text" placeholder="Votre nom complet" required />
-          </div>
-
-          <div class="field">
-            <label>Numéro de téléphone / WhatsApp *</label>
-            <input name="phone" type="tel" placeholder="+213..." required />
-          </div>
-
-          <div class="field">
-            <label>Email</label>
-            <input name="email" type="email" placeholder="Votre email" />
-          </div>
-
-          <div class="field">
-            <label>Pays de destination *</label>
-            <input name="country" type="text" placeholder="Ex: Tunisie" required />
-          </div>
-
-          <div class="field">
-            <label>Ville de destination *</label>
-            <input name="city" type="text" placeholder="Ex: Sousse" required />
-          </div>
-
-          <div class="field">
-            <label>Date de départ</label>
-            <input name="departureDate" type="date" />
-          </div>
-
-          <div class="field">
-            <label>Date de retour</label>
-            <input name="returnDate" type="date" />
-          </div>
-
-          <div class="field">
-            <label>Type de voyage *</label>
-            <select name="serviceType" required>
-              <option value="">Sélectionnez</option>
-              <option>Voyage organisé</option>
-              <option>Pack vacances</option>
-              <option>Hôtel seulement</option>
-              <option>Billet d’avion</option>
-              <option>Omra</option>
-              <option>Autre</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label>Type de billet</label>
-            <select name="ticketType">
-              <option value="">Sélectionnez</option>
-              <option>Aller-retour</option>
-              <option>Aller simple</option>
-              <option>Multiples vols</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label>Nombre de voyageurs</label>
-            <select name="travelers">
-              <option>1 voyageur</option>
-              <option>2 voyageurs</option>
-              <option>3 voyageurs</option>
-              <option>4 voyageurs</option>
-              <option>5+ voyageurs</option>
-            </select>
-          </div>
-
-          <div class="field full">
-            <label>Votre budget</label>
-            <input name="budget" type="text" placeholder="Ex: 100000 DA" />
-          </div>
-
-          <div class="field full">
-            <label>Votre message</label>
-            <textarea name="message" placeholder="Décrivez votre projet de voyage..."></textarea>
-          </div>
-
-          <button class="submitBtn" type="submit">Envoyer ma demande</button>
-          <p id="formStatus" class="formStatus"></p>
-        </form>
-      </section>
-    </main>
-
-    <footer id="contact" class="footer">
-      <div>
-        <div class="footerBrand">
-          <img src="logo.jpg" alt="Red X Travel" />
-          <strong>Red X Travel</strong>
-        </div>
-        <p>Votre partenaire de confiance pour des voyages inoubliables.</p>
       </div>
 
-      <div>
-        <h3>Contact</h3>
-        <p>📍 Ouled Fayet, Alger, Algérie 16000</p>
-        <p>📧 <a href="mailto:info@redxtravel.com">info@redxtravel.com</a></p>
-        <p>📱 <a href="https://wa.me/213664719894" target="_blank" rel="noreferrer">+213 664 71 98 94</a></p>
-      </div>
-
-      <div>
-        <h3>Réseaux sociaux</h3>
-        <a href="https://www.instagram.com/redxtravel" target="_blank" rel="noreferrer">Instagram</a>
-        <a href="https://www.facebook.com/share/1CCuVnPYRk/" target="_blank" rel="noreferrer">Facebook</a>
-        <a href="https://www.tiktok.com/@red.x.travel" target="_blank" rel="noreferrer">TikTok</a>
-      </div>
-    </footer>
-  </div>
-
-  <div id="adminSite" class="adminSite" hidden>
-    <section id="adminLogin" class="adminLogin">
-      <div class="loginCard">
-        <img src="logo.jpg" alt="Red X Travel" />
-        <h1>Accès Admin</h1>
-        <p>Page cachée pour Red X Travel</p>
-        <input id="adminEmail" type="email" placeholder="Email admin" />
-        <input id="adminPassword" type="password" placeholder="Mot de passe" />
-        <button id="adminLoginBtn">Se connecter</button>
-        <small>Mode démo: admin@redxtravel.com / redx2026</small>
+      <div class="trust-panel">
+        <div><strong>Service rapide</strong><span>Réponse via WhatsApp</span></div>
+        <div><strong>Offres vérifiées</strong><span>Photos et prix clairs</span></div>
+        <div><strong>Agence locale</strong><span>Ouled Fayet, Alger</span></div>
       </div>
     </section>
 
-    <section id="adminDashboard" class="adminDashboard" hidden>
-      <aside>
-        <div class="adminBrand"><img src="logo.jpg" alt="" /> <strong>Red X Travel</strong></div>
-        <button data-panel="requestsPanel" class="active">Demandes</button>
+    <section id="offers" class="offers-section">
+      <div class="section-heading">
+        <span class="section-kicker">Sélection Red X Travel</span>
+        <h2>Offres disponibles</h2>
+        <p>Faites défiler les affiches pour consulter les offres actuelles publiées par l’agence.</p>
+      </div>
+
+      <div class="carousel-shell">
+        <button class="nav-arrow nav-left" id="prevOffer" aria-label="Offre précédente">‹</button>
+        <div class="offers-track" id="offersTrack"></div>
+        <button class="nav-arrow nav-right" id="nextOffer" aria-label="Offre suivante">›</button>
+      </div>
+      <div class="carousel-dots" id="offerDots"></div>
+    </section>
+
+    <section id="request" class="request-section">
+      <div class="request-layout">
+        <aside class="request-info">
+          <span class="section-kicker">Demande personnalisée</span>
+          <h2>Recevez une proposition adaptée à votre voyage.</h2>
+          <p>Après avoir consulté les offres, remplissez le formulaire avec la destination souhaitée. L’équipe vous contactera rapidement.</p>
+
+          <div class="info-list">
+            <div><span class="icon destination-icon"></span><p><strong>Destination</strong><small>Pays, ville et dates souhaitées</small></p></div>
+            <div><span class="icon ticket-icon"></span><p><strong>Billet ou séjour</strong><small>Aller simple, aller-retour ou multi-vols</small></p></div>
+            <div><span class="icon support-icon"></span><p><strong>Contact rapide</strong><small>Suivi par téléphone ou WhatsApp</small></p></div>
+          </div>
+        </aside>
+
+        <form id="travelForm" class="travel-form">
+          <div class="form-grid">
+            <label>Nom complet *
+              <input name="name" type="text" placeholder="Votre nom complet" required>
+            </label>
+
+            <label>Numéro de téléphone / WhatsApp *
+              <input name="phone" type="tel" placeholder="+213..." required>
+            </label>
+
+            <label>Email
+              <input name="email" type="email" placeholder="votre@email.com">
+            </label>
+
+            <label>Pays de destination *
+              <input name="country" type="text" placeholder="Ex: Tunisie" required>
+            </label>
+
+            <label>Ville de destination *
+              <input name="city" type="text" placeholder="Ex: Sousse" required>
+            </label>
+
+            <label>Date de départ
+              <input name="departureDate" type="date">
+            </label>
+
+            <label>Date de retour
+              <input name="returnDate" type="date">
+            </label>
+
+            <label>Type de voyage *
+              <select name="serviceType" required>
+                <option value="">Sélectionnez</option>
+                <option>Voyage organisé</option>
+                <option>Pack vacances</option>
+                <option>Hôtel seulement</option>
+                <option>Billet d’avion</option>
+                <option>Omra</option>
+                <option>Autre</option>
+              </select>
+            </label>
+
+            <label>Type de billet
+              <select name="ticketType">
+                <option value="">Sélectionnez</option>
+                <option>Aller-retour</option>
+                <option>Aller simple</option>
+                <option>Multiples vols</option>
+              </select>
+            </label>
+
+            <label>Nombre de voyageurs
+              <select name="travelers">
+                <option>1 voyageur</option>
+                <option>2 voyageurs</option>
+                <option>3 voyageurs</option>
+                <option>4 voyageurs</option>
+                <option>5+ voyageurs</option>
+              </select>
+            </label>
+
+            <label class="full">Budget approximatif
+              <input name="budget" type="text" placeholder="Ex: 100000 DA">
+            </label>
+
+            <label class="full">Message
+              <textarea name="message" placeholder="Ajoutez les détails importants de votre demande..."></textarea>
+            </label>
+          </div>
+
+          <button class="submit-btn" type="submit">Envoyer ma demande</button>
+          <p id="formStatus" class="form-status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="footer">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <span class="logo-frame"><img src="logo.jpg" alt="Red X Travel"></span>
+        <div>
+          <strong>Red X Travel</strong>
+          <small>Agence de voyage · Alger</small>
+        </div>
+      </div>
+      <p>Votre partenaire pour organiser vos séjours, hôtels, billets d’avion et packs touristiques.</p>
+    </div>
+
+    <div class="footer-card">
+      <h3>Coordonnées</h3>
+      <a href="https://maps.google.com/?q=Ouled+Fayet+Alger+Algerie+16000" target="_blank" rel="noreferrer"><span class="icon location-icon"></span> Ouled Fayet, Alger, Algérie 16000</a>
+      <a href="mailto:info@redxtravel.com"><span class="icon mail-icon"></span> info@redxtravel.com</a>
+      <a href="https://wa.me/213664719894" target="_blank" rel="noreferrer"><span class="icon phone-icon"></span> +213 664 71 98 94</a>
+    </div>
+
+    <div class="footer-card">
+      <h3>Réseaux sociaux</h3>
+      <a href="https://www.instagram.com/redxtravel" target="_blank" rel="noreferrer">Instagram</a>
+      <a href="https://www.facebook.com/share/1CCuVnPYRk/" target="_blank" rel="noreferrer">Facebook</a>
+      <a href="https://www.tiktok.com/@red.x.travel" target="_blank" rel="noreferrer">TikTok</a>
+    </div>
+  </footer>
+
+  <a class="floating-cta" href="https://wa.me/213664719894" target="_blank" rel="noreferrer">
+    <span class="icon phone-icon"></span> WhatsApp
+  </a>
+
+  <section id="adminSite" class="admin-site" hidden>
+    <div id="adminLogin" class="admin-login">
+      <div class="login-box">
+        <span class="logo-frame large"><img src="logo.jpg" alt="Red X Travel"></span>
+        <h1>Accès Admin</h1>
+        <p>Espace privé Red X Travel</p>
+        <input id="adminEmail" type="email" placeholder="Email admin">
+        <input id="adminPassword" type="password" placeholder="Mot de passe">
+        <button id="adminLoginBtn">Se connecter</button>
+        <small>Démo: admin@redxtravel.com / redx2026</small>
+      </div>
+    </div>
+
+    <div id="adminDashboard" class="admin-dashboard" hidden>
+      <aside class="admin-sidebar">
+        <div class="admin-brand"><span class="logo-frame"><img src="logo.jpg"></span><strong>Red X Travel</strong></div>
+        <button class="active" data-panel="requestsPanel">Demandes</button>
         <button data-panel="offersPanel">Offres</button>
         <button id="logoutBtn">Déconnexion</button>
       </aside>
-
-      <div class="adminContent">
-        <div class="adminTop">
-          <h1>Tableau de bord</h1>
-          <span>Admin</span>
-        </div>
-
-        <div class="stats">
+      <div class="admin-content">
+        <h1>Tableau de bord</h1>
+        <div class="admin-stats">
           <div><strong id="totalRequests">0</strong><span>Demandes</span></div>
-          <div><strong id="totalOffers">6</strong><span>Offres</span></div>
-          <div><strong>Red X</strong><span>Travel</span></div>
+          <div><strong id="totalOffers">6</strong><span>Offres publiées</span></div>
         </div>
 
-        <div id="requestsPanel" class="panel">
+        <div id="requestsPanel" class="admin-panel">
           <h2>Demandes reçues</h2>
-          <div class="tableWrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Nom</th><th>Téléphone</th><th>Destination</th><th>Type</th><th>Date</th>
-                </tr>
-              </thead>
-              <tbody id="requestsTable"></tbody>
-            </table>
-          </div>
+          <table>
+            <thead><tr><th>Nom</th><th>Téléphone</th><th>Destination</th><th>Type</th><th>Date</th></tr></thead>
+            <tbody id="requestsTable"></tbody>
+          </table>
         </div>
 
-        <div id="offersPanel" class="panel" hidden>
-          <h2>Gestion des offres</h2>
-          <p class="note">Version simple: les offres initiales sont dans le fichier <strong>app.js</strong>. Avec Firebase Storage, on ajoutera l’upload photos directement depuis ici.</p>
-          <div id="adminOffersGrid" class="adminOffersGrid"></div>
+        <div id="offersPanel" class="admin-panel" hidden>
+          <h2>Offres</h2>
+          <p>La gestion complète des uploads photo sera connectée avec Firebase Storage à l’étape suivante.</p>
+          <div id="adminOffersGrid" class="admin-offers-grid"></div>
         </div>
       </div>
-    </section>
-  </div>
-
-  <a class="floatingWhatsApp" href="https://wa.me/213664719894" target="_blank" rel="noreferrer">WhatsApp</a>
+    </div>
+  </section>
 
   <script src="firebase-config.js"></script>
   <script type="module" src="app.js"></script>

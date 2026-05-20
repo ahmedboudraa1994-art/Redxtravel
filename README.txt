@@ -1,33 +1,16 @@
-RED X TRAVEL - SITE WEB
+RED X TRAVEL PROFESSIONAL V2
 
-Fichiers inclus:
-- index.html
-- styles.css
-- app.js
-- firebase-config.js
-- vercel.json
-- logo.jpg
-- 6 photos d'offres
+Corrections:
+- Suppression des emojis basiques.
+- Icônes SVG professionnelles en CSS.
+- Navbar, footer et section contact redesignés.
+- Slider offres plus propre.
+- Formulaire plus premium.
+- Page /admin conservée.
 
-Pages:
-- / : site public
-- /admin : admin caché
+Déploiement:
+Uploader tous ces fichiers dans GitHub puis redeploy sur Vercel.
 
-Login admin démo:
-- email: admin@redxtravel.com
-- mot de passe: redx2026
-
-Important:
-Pour connecter Firebase, crée une application Web dans Firebase puis colle le firebaseConfig dans firebase-config.js.
-
-Collections Firebase prévues:
-- requests : demandes clients
-- offers : offres photos plus tard avec Storage
-
-Contact agence:
-- Adresse: Ouled Fayet, Alger, Algérie 16000
-- Email: info@redxtravel.com
-- WhatsApp: +213664719894
-- Instagram: https://www.instagram.com/redxtravel
-- Facebook: https://www.facebook.com/share/1CCuVnPYRk/
-- TikTok: https://www.tiktok.com/@red.x.travel
+Admin démo:
+admin@redxtravel.com
+redx2026
