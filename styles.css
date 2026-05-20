@@ -546,3 +546,105 @@ body.rtl .hero-metrics div{
 .header-card{
   gap:14px;
 }
+
+
+/* V14 fixed header language switcher */
+body > .language-switcher{
+  display:none !important;
+}
+
+.header-language-switcher{
+  position:static !important;
+  margin-left:auto !important;
+  margin-right:0 !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:4px !important;
+  padding:5px !important;
+  min-width:max-content !important;
+  max-width:none !important;
+  border-radius:999px !important;
+  background:rgba(6,27,53,.92) !important;
+  border:1px solid rgba(255,255,255,.16) !important;
+  box-shadow:0 14px 30px rgba(6,27,53,.25) !important;
+  flex:0 0 auto !important;
+  transform:none !important;
+}
+
+.header-language-switcher button{
+  border:0 !important;
+  border-radius:999px !important;
+  padding:7px 9px !important;
+  background:transparent !important;
+  color:#fff !important;
+  font-weight:950 !important;
+  font-size:12px !important;
+  line-height:1 !important;
+  white-space:nowrap !important;
+  cursor:pointer !important;
+}
+
+.header-language-switcher button.active{
+  background:#fff !important;
+  color:#061b35 !important;
+}
+
+/* Make the main top bar act as a clean 3-zone header */
+.lux-header,
+.site-header,
+.header-card,
+.top-brand,
+.brand-bar{
+  display:flex !important;
+  align-items:center !important;
+  gap:14px !important;
+  overflow:hidden !important;
+}
+
+.lux-header .brand-mark,
+.site-header .brand-mark,
+.header-card .brand-mark,
+.top-brand .brand-mark,
+.brand-bar .brand-mark{
+  flex:0 0 auto !important;
+}
+
+.lux-header img[src*="logo"],
+.site-header img[src*="logo"],
+.header-card img[src*="logo"],
+.top-brand img[src*="logo"],
+.brand-bar img[src*="logo"]{
+  flex:0 0 auto !important;
+}
+
+.lux-header > div:not(.header-language-switcher),
+.site-header > div:not(.header-language-switcher),
+.header-card > div:not(.header-language-switcher),
+.top-brand > div:not(.header-language-switcher),
+.brand-bar > div:not(.header-language-switcher){
+  min-width:0 !important;
+}
+
+body.rtl .header-language-switcher{
+  margin-left:0 !important;
+  margin-right:auto !important;
+}
+
+@media(max-width:900px){
+  .header-language-switcher{
+    gap:3px !important;
+    padding:4px !important;
+  }
+  .header-language-switcher button{
+    padding:7px 8px !important;
+    font-size:11px !important;
+  }
+}
+
+@media(max-width:420px){
+  .header-language-switcher button{
+    padding:6px 7px !important;
+    font-size:10.5px !important;
+  }
+}

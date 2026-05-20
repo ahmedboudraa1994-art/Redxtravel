@@ -1,12 +1,7 @@
-RED X TRAVEL ADMIN V13 - PREMIUM LANGUAGE
+RED X TRAVEL ADMIN V14 - LANGUAGE HEADER FIXED
 
-Changements:
-- Sélecteur de langue intégré dans la barre du logo, pas au milieu du hero.
-- Nouveau wording premium par langue, pas traduction mot-à-mot.
-- Français plus vendeur.
-- Anglais plus international.
-- Arabe naturel, plus professionnel et plus impactant.
-- RTL amélioré.
-
-Notes:
-- Les affiches d’offres sont des images; leur langue dépend de l’image uploadée.
+Correction:
+- Le sélecteur de langue ne chevauche plus le logo.
+- Logo à gauche, marque au centre, langues à droite.
+- Responsive mobile corrigé.
+- Style premium conservé.
