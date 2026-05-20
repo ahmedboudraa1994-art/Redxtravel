@@ -1,9 +1,9 @@
-RED X TRAVEL V23 - FORM FIRST
+RED X TRAVEL V24 - HERO BACKGROUND FINAL RESPONSIVE
 
-Changement:
-- Formulaire placé avant les offres.
-- Hero bouton principal: Demander un devis.
-- Bouton secondaire: Voir les offres.
-- Navigation: Devis avant Offres.
-- Textes FR / EN / AR adaptés à ce nouveau parcours.
-- Firebase/admin inchangés.
+Correction:
+- Image hero en vrai background cover responsive.
+- Plus de coupe grise au milieu.
+- PC: cadrage cinématique centré.
+- Mobile: cadrage haut + overlay premium pour lisibilité.
+- Titres mobile ajustés pour éviter débordements.
+- RTL arabe ajusté.
