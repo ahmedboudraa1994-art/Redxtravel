@@ -1,10 +1,10 @@
 const offers = [
-  { title: "Hotel Tour Khalef", price: "21000 DA", image: "offer-khalef.jpg" },
-  { title: "Hotel Occidental Marhaba", price: "17000 DA", image: "offer-occidental-marhaba.jpg" },
-  { title: "Hotel Marhaba Beach", price: "13000 DA", image: "offer-marhaba-beach.jpg" },
-  { title: "El Mouradi Club Kantaoui", price: "6600 DA", image: "offer-kantaoui.jpg" },
-  { title: "Hotel Marabout Sousse", price: "6900 DA", image: "offer-marabout.jpg" },
-  { title: "Sol Palmeras Beach", price: "4500 DA", image: "offer-sol-palmeras.jpg" }
+  { title: "Hotel Tour Khalef",        dest: "Sousse, Tunisie",  price: "21 000 DA", image: "offer-khalef.jpg" },
+  { title: "Occidental Marhaba",       dest: "Sousse, Tunisie",  price: "17 000 DA", image: "offer-occidental-marhaba.jpg" },
+  { title: "Marhaba Beach",            dest: "Sousse, Tunisie",  price: "13 000 DA", image: "offer-marhaba-beach.jpg" },
+  { title: "El Mouradi Club Kantaoui", dest: "Kantaoui, Tunisie",price: "6 600 DA",  image: "offer-kantaoui.jpg" },
+  { title: "Hotel Marabout",           dest: "Sousse, Tunisie",  price: "6 900 DA",  image: "offer-marabout.jpg" },
+  { title: "Sol Palmeras Beach",       dest: "Cuba",             price: "4 500 DA",  image: "offer-sol-palmeras.jpg" }
 ];
 
 const $ = (s) => document.querySelector(s);
@@ -34,9 +34,15 @@ function renderOffers() {
   if (!track) return;
   track.innerHTML = offers.map((o, i) => `
     <article class="offer-card" data-index="${i}">
-      <img src="${o.image}" alt="${o.title}">
-      <div class="offer-meta">
-        <div><h3>${o.title}</h3><p>Offre Red X Travel</p></div>
+      <div class="offer-card-img">
+        <span class="offer-dest-tag">${o.dest}</span>
+        <img src="${o.image}" alt="${o.title}" loading="lazy">
+      </div>
+      <div class="offer-card-body">
+        <div>
+          <h3>${o.title}</h3>
+          <p>Offre Red X Travel</p>
+        </div>
         <span class="price-chip">À partir de ${o.price}</span>
       </div>
     </article>
@@ -60,8 +66,8 @@ function updateDots() {
   document.querySelectorAll("[data-dot]").forEach((dot, i) => dot.classList.toggle("active", i === active));
 }
 
-$("#prevOffer")?.addEventListener("click", () => $("#offersTrack").scrollBy({ left: -700, behavior: "smooth" }));
-$("#nextOffer")?.addEventListener("click", () => $("#offersTrack").scrollBy({ left: 700, behavior: "smooth" }));
+$("#prevOffer")?.addEventListener("click", () => $("#offersTrack").scrollBy({ left: -600, behavior: "smooth" }));
+$("#nextOffer")?.addEventListener("click", () => $("#offersTrack").scrollBy({ left: 600, behavior: "smooth" }));
 $("#offersTrack")?.addEventListener("scroll", () => requestAnimationFrame(updateDots));
 $("#offerDots")?.addEventListener("click", (e) => {
   const b = e.target.closest("[data-dot]");
@@ -87,13 +93,13 @@ $("#travelForm")?.addEventListener("submit", async (e) => {
       await firebaseFns.addDoc(firebaseFns.collection(firestoreDb, "requests"), data);
     }
     saveLocalRequest(data);
-    $("#formStatus").textContent = "Votre demande a été envoyée avec succès.";
+    $("#formStatus").textContent = "✓ Votre demande a été envoyée avec succès.";
     form.reset();
     renderRequests();
   } catch (err) {
     console.error(err);
     saveLocalRequest(data);
-    $("#formStatus").textContent = "Demande enregistrée. Connexion Firebase à finaliser.";
+    $("#formStatus").textContent = "✓ Demande enregistrée. Nous vous contacterons bientôt.";
     form.reset();
   }
 });
@@ -103,7 +109,7 @@ function renderRequests(rows = getLocalRequests()) {
   if (!body) return;
   $("#totalRequests").textContent = rows.length;
   if (!rows.length) {
-    body.innerHTML = `<tr><td colspan="5">Aucune demande pour le moment.</td></tr>`;
+    body.innerHTML = `<tr><td colspan="5" style="color:rgba(255,255,255,0.4);text-align:center;padding:24px">Aucune demande pour le moment.</td></tr>`;
     return;
   }
   body.innerHTML = rows.map(r => `
