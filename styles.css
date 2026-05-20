@@ -690,3 +690,35 @@ body.rtl .hero-bg{
 body.rtl .hero h1{
   line-height:1.15 !important;
 }
+
+
+/* V20 final mobile hero tuning */
+
+@media(max-width:767px){
+
+  .hero-bg{
+    background-size:125% auto !important;
+    background-position:center 8% !important;
+  }
+
+  .hero{
+    padding-top:170px !important;
+    padding-bottom:90px !important;
+  }
+
+  .hero::before{
+    background:linear-gradient(
+      180deg,
+      rgba(4,18,38,.82) 0%,
+      rgba(4,18,38,.58) 40%,
+      rgba(4,18,38,.78) 100%
+    ) !important;
+  }
+}
+
+@media(max-width:430px){
+  .hero-bg{
+    background-size:132% auto !important;
+    background-position:center 10% !important;
+  }
+}
