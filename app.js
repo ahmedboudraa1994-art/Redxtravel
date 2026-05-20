@@ -59,14 +59,14 @@ $("#travelForm")?.addEventListener("submit",async e=>{
  e.preventDefault();
  const form=e.currentTarget,btn=form.querySelector("button[type='submit']"),data=Object.fromEntries(new FormData(form).entries());
  data.createdAt=new Date().toISOString(); data.status="Nouveau";
- if(btn){btn.disabled=true;btn.textContent=(translations[currentLang()]||translations.fr).sentBtn}
- const t=translations[currentLang()]||translations.fr;
- $("#formStatus").innerHTML=`<span class="success-title">${t.successTitle}</span><span class="success-text">${t.successText}</span>`;
+ if(btn){btn.disabled=true;btn.textContent=langData().sentBtn}
+ const lt=langData();
+ $("#formStatus").innerHTML=`<span class="success-title">${lt.successTitle}</span><span class="success-text">${lt.successText}</span>`;
  $("#formStatus").classList.add("success-box");
  saveLocalRequest(data);
  try{if(firebaseReady)await firebaseFns.addDoc(firebaseFns.collection(firestoreDb,"requests"),data)}catch(e){console.warn(e)}
  form.reset();
- setTimeout(()=>{if(btn){btn.disabled=false;btn.textContent=(translations[currentLang()]||translations.fr).submit}},2500);
+ setTimeout(()=>{if(btn){btn.disabled=false;btn.textContent=langData().submit}},2500);
 });
 
 async function loadRequests(){
@@ -205,257 +205,121 @@ document.querySelectorAll("[data-panel]").forEach(b=>b.addEventListener("click",
  if(b.dataset.panel==="requestsPanel")await loadRequests(); if(b.dataset.panel==="offersPanel")await loadOffers();
 }));
 
-const translations = {
+const I18N = {
   fr: {
-    dir: "ltr",
-    tagline: "Agence touristique · Alger",
-    offersTitle: "Nos Offres",
-    offersSubtitle: "Faites défiler les photos à gauche ou à droite pour découvrir les offres actuelles.",
-    requestLabel: "Demande personnalisée",
-    requestTitle: "Demandez votre devis voyage.",
-    requestSubtitle: "Remplissez les informations essentielles. L’équipe Red X Travel vous contactera rapidement avec une proposition adaptée.",
-    fullName: "Nom complet *",
-    fullNamePh: "Ex: Mohamed Amine",
-    phone: "Téléphone / WhatsApp *",
-    email: "Email",
-    serviceType: "Type de service *",
-    chooseService: "Choisir un service",
-    country: "Pays de destination *",
-    countryPh: "Ex: Tunisie",
-    city: "Ville de destination *",
-    cityPh: "Ex: Sousse",
-    departure: "Date aller",
-    returnDate: "Date retour",
-    ticketType: "Type de billet",
-    notSpecified: "Non précisé",
-    travelers: "Nombre de voyageurs",
-    budget: "Budget approximatif",
-    budgetPh: "Ex: 100000 DA",
-    message: "Message complémentaire",
-    messagePh: "Ajoutez les détails importants : hôtel souhaité, enfants, dates flexibles, etc.",
-    submit: "Envoyer ma demande",
-    sentBtn: "Demande envoyée",
-    successTitle: "Votre demande a bien été envoyée.",
-    successText: "Notre équipe Red X Travel vous contactera rapidement par téléphone ou WhatsApp afin de vous proposer les meilleures offres disponibles.",
-    contact: "Contact",
-    social: "Réseaux sociaux",
-    adminPrivate: "Espace privé Red X Travel",
-    loginTitle: "Accès Admin",
-    loginBtn: "Se connecter",
-    saveAccess: "Sauvegarder l’accès sur cet appareil",
-    dashboard: "Tableau de bord",
-    dashboardSub: "Gérez les demandes clients et les offres depuis votre téléphone.",
-    adminRequests: "Demandes",
-    adminOffers: "Offres",
-    logout: "Déconnexion",
-    requestsTitle: "Demandes clients",
-    requestsSub: "Consultez, changez le statut ou supprimez les demandes traitées.",
-    refresh: "Actualiser",
-    offersManage: "Gestion des offres",
-    offersManageSub: "Ajoutez une nouvelle affiche ou supprimez une ancienne offre.",
-    offerTitle: "Titre de l’offre *",
-    offerDetail: "Détail / formule",
-    offerPrice: "Prix",
-    offerOrder: "Position d’affichage",
-    offerPhoto: "Photo de l’offre *",
-    addOffer: "Ajouter l’offre",
-    noOffers: "Aucune offre publiée pour le moment. Ajoutez la première offre avec une photo pour l’afficher sur le site."
+    dir:"ltr",
+    tagline:"Agence touristique · Alger",
+    offersTitle:"Nos Offres",
+    offersSubtitle:"Faites défiler les photos à gauche ou à droite pour découvrir les offres actuelles.",
+    requestLabel:"Demande personnalisée",
+    requestTitle:"Demandez votre devis voyage.",
+    requestSubtitle:"Remplissez les informations essentielles. L’équipe Red X Travel vous contactera rapidement avec une proposition adaptée.",
+    fullName:"Nom complet *", fullNamePh:"Ex: Mohamed Amine",
+    phone:"Téléphone / WhatsApp *", email:"Email",
+    serviceType:"Type de service *", chooseService:"Choisir un service",
+    country:"Pays de destination *", countryPh:"Ex: Tunisie",
+    city:"Ville de destination *", cityPh:"Ex: Sousse",
+    departure:"Date aller", returnDate:"Date retour",
+    ticketType:"Type de billet", notSpecified:"Non précisé",
+    travelers:"Nombre de voyageurs",
+    budget:"Budget approximatif", budgetPh:"Ex: 100000 DA",
+    message:"Message complémentaire", messagePh:"Ajoutez les détails importants : hôtel souhaité, enfants, dates flexibles, etc.",
+    submit:"Envoyer ma demande", sentBtn:"Demande envoyée",
+    successTitle:"Votre demande a bien été envoyée.",
+    successText:"Notre équipe Red X Travel vous contactera rapidement par téléphone ou WhatsApp afin de vous proposer les meilleures offres disponibles.",
+    contact:"Contact", social:"Réseaux sociaux",
+    loginTitle:"Accès Admin", adminPrivate:"Espace privé Red X Travel", loginBtn:"Se connecter", saveAccess:"Sauvegarder l’accès sur cet appareil",
+    dashboard:"Tableau de bord", dashboardSub:"Gérez les demandes clients et les offres depuis votre téléphone.",
+    adminRequests:"Demandes", adminOffers:"Offres", logout:"Déconnexion",
+    requestsTitle:"Demandes clients", requestsSub:"Consultez, changez le statut ou supprimez les demandes traitées.", refresh:"Actualiser",
+    offersManage:"Gestion des offres", offersManageSub:"Ajoutez une nouvelle affiche ou supprimez une ancienne offre.",
+    offerTitle:"Titre de l’offre *", offerDetail:"Détail / formule", offerPrice:"Prix", offerOrder:"Position d’affichage", offerPhoto:"Photo de l’offre *", addOffer:"Ajouter l’offre"
   },
   en: {
-    dir: "ltr",
-    tagline: "Travel agency · Algiers",
-    offersTitle: "Our Offers",
-    offersSubtitle: "Swipe left or right to explore the latest travel offers.",
-    requestLabel: "Custom request",
-    requestTitle: "Request your travel quote.",
-    requestSubtitle: "Fill in the essential details. Red X Travel will contact you quickly with a tailored proposal.",
-    fullName: "Full name *",
-    fullNamePh: "Ex: Mohamed Amine",
-    phone: "Phone / WhatsApp *",
-    email: "Email",
-    serviceType: "Service type *",
-    chooseService: "Choose a service",
-    country: "Destination country *",
-    countryPh: "Ex: Tunisia",
-    city: "Destination city *",
-    cityPh: "Ex: Sousse",
-    departure: "Departure date",
-    returnDate: "Return date",
-    ticketType: "Ticket type",
-    notSpecified: "Not specified",
-    travelers: "Number of travelers",
-    budget: "Approximate budget",
-    budgetPh: "Ex: 100000 DZD",
-    message: "Additional message",
-    messagePh: "Add important details: preferred hotel, children, flexible dates, etc.",
-    submit: "Send my request",
-    sentBtn: "Request sent",
-    successTitle: "Your request has been sent successfully.",
-    successText: "The Red X Travel team will contact you shortly by phone or WhatsApp to offer you the best available options.",
-    contact: "Contact",
-    social: "Social media",
-    adminPrivate: "Private Red X Travel area",
-    loginTitle: "Admin Access",
-    loginBtn: "Sign in",
-    saveAccess: "Save access on this device",
-    dashboard: "Dashboard",
-    dashboardSub: "Manage client requests and offers from your phone.",
-    adminRequests: "Requests",
-    adminOffers: "Offers",
-    logout: "Log out",
-    requestsTitle: "Client requests",
-    requestsSub: "Review, update status, or delete processed requests.",
-    refresh: "Refresh",
-    offersManage: "Offer management",
-    offersManageSub: "Add a new poster or delete an old offer.",
-    offerTitle: "Offer title *",
-    offerDetail: "Details / package",
-    offerPrice: "Price",
-    offerOrder: "Display position",
-    offerPhoto: "Offer photo *",
-    addOffer: "Add offer",
-    noOffers: "No offers published yet. Add the first offer with a photo to display it on the website."
+    dir:"ltr",
+    tagline:"Travel agency · Algiers",
+    offersTitle:"Our Offers",
+    offersSubtitle:"Swipe left or right to explore the latest travel offers.",
+    requestLabel:"Custom request",
+    requestTitle:"Request your travel quote.",
+    requestSubtitle:"Fill in the essential details. Red X Travel will contact you quickly with a tailored proposal.",
+    fullName:"Full name *", fullNamePh:"Ex: Mohamed Amine",
+    phone:"Phone / WhatsApp *", email:"Email",
+    serviceType:"Service type *", chooseService:"Choose a service",
+    country:"Destination country *", countryPh:"Ex: Tunisia",
+    city:"Destination city *", cityPh:"Ex: Sousse",
+    departure:"Departure date", returnDate:"Return date",
+    ticketType:"Ticket type", notSpecified:"Not specified",
+    travelers:"Number of travelers",
+    budget:"Approximate budget", budgetPh:"Ex: 100000 DZD",
+    message:"Additional message", messagePh:"Add important details: preferred hotel, children, flexible dates, etc.",
+    submit:"Send my request", sentBtn:"Request sent",
+    successTitle:"Your request has been sent successfully.",
+    successText:"The Red X Travel team will contact you shortly by phone or WhatsApp to offer you the best available options.",
+    contact:"Contact", social:"Social media",
+    loginTitle:"Admin Access", adminPrivate:"Private Red X Travel area", loginBtn:"Sign in", saveAccess:"Save access on this device",
+    dashboard:"Dashboard", dashboardSub:"Manage client requests and offers from your phone.",
+    adminRequests:"Requests", adminOffers:"Offers", logout:"Log out",
+    requestsTitle:"Client requests", requestsSub:"Review, update status, or delete processed requests.", refresh:"Refresh",
+    offersManage:"Offer management", offersManageSub:"Add a new poster or delete an old offer.",
+    offerTitle:"Offer title *", offerDetail:"Details / package", offerPrice:"Price", offerOrder:"Display position", offerPhoto:"Offer photo *", addOffer:"Add offer"
   },
   ar: {
-    dir: "rtl",
-    tagline: "وكالة سياحية · الجزائر",
-    offersTitle: "عروضنا",
-    offersSubtitle: "مرّر الصور يمينًا أو يسارًا للاطلاع على أحدث العروض المتاحة.",
-    requestLabel: "طلب مخصّص",
-    requestTitle: "اطلب عرض سعر لرحلتك.",
-    requestSubtitle: "املأ المعلومات الأساسية، وسيتواصل معك فريق Red X Travel سريعًا لاقتراح العرض الأنسب.",
-    fullName: "الاسم الكامل *",
-    fullNamePh: "مثال: محمد أمين",
-    phone: "رقم الهاتف / واتساب *",
-    email: "البريد الإلكتروني",
-    serviceType: "نوع الخدمة *",
-    chooseService: "اختر الخدمة",
-    country: "بلد الوجهة *",
-    countryPh: "مثال: تونس",
-    city: "مدينة الوجهة *",
-    cityPh: "مثال: سوسة",
-    departure: "تاريخ الذهاب",
-    returnDate: "تاريخ العودة",
-    ticketType: "نوع التذكرة",
-    notSpecified: "غير محدد",
-    travelers: "عدد المسافرين",
-    budget: "الميزانية التقريبية",
-    budgetPh: "مثال: 100000 دج",
-    message: "ملاحظات إضافية",
-    messagePh: "أضف التفاصيل المهمة: الفندق المفضل، الأطفال، مرونة التواريخ، وغيرها.",
-    submit: "إرسال الطلب",
-    sentBtn: "تم إرسال الطلب",
-    successTitle: "تم إرسال طلبك بنجاح.",
-    successText: "سيتواصل معك فريق Red X Travel قريبًا عبر الهاتف أو واتساب لاقتراح أفضل العروض المتاحة.",
-    contact: "معلومات التواصل",
-    social: "وسائل التواصل الاجتماعي",
-    adminPrivate: "المساحة الخاصة بـ Red X Travel",
-    loginTitle: "دخول المسؤول",
-    loginBtn: "تسجيل الدخول",
-    saveAccess: "حفظ الدخول على هذا الجهاز",
-    dashboard: "لوحة التحكم",
-    dashboardSub: "إدارة طلبات العملاء والعروض من الهاتف.",
-    adminRequests: "الطلبات",
-    adminOffers: "العروض",
-    logout: "تسجيل الخروج",
-    requestsTitle: "طلبات العملاء",
-    requestsSub: "اطّلع على الطلبات، غيّر حالتها أو احذف الطلبات التي تمت معالجتها.",
-    refresh: "تحديث",
-    offersManage: "إدارة العروض",
-    offersManageSub: "أضف إعلانًا جديدًا أو احذف عرضًا قديمًا.",
-    offerTitle: "عنوان العرض *",
-    offerDetail: "التفاصيل / الصيغة",
-    offerPrice: "السعر",
-    offerOrder: "ترتيب الظهور",
-    offerPhoto: "صورة العرض *",
-    addOffer: "إضافة العرض",
-    noOffers: "لا توجد عروض منشورة حاليًا. أضف أول عرض مع صورة ليظهر في الموقع."
+    dir:"rtl",
+    tagline:"وكالة سياحية · الجزائر",
+    offersTitle:"عروضنا",
+    offersSubtitle:"مرّر الصور يمينًا أو يسارًا للاطلاع على أحدث العروض المتاحة.",
+    requestLabel:"طلب مخصّص",
+    requestTitle:"اطلب عرض سعر لرحلتك.",
+    requestSubtitle:"املأ المعلومات الأساسية، وسيتواصل معك فريق Red X Travel سريعًا لاقتراح العرض الأنسب.",
+    fullName:"الاسم الكامل *", fullNamePh:"مثال: محمد أمين",
+    phone:"رقم الهاتف / واتساب *", email:"البريد الإلكتروني",
+    serviceType:"نوع الخدمة *", chooseService:"اختر الخدمة",
+    country:"بلد الوجهة *", countryPh:"مثال: تونس",
+    city:"مدينة الوجهة *", cityPh:"مثال: سوسة",
+    departure:"تاريخ الذهاب", returnDate:"تاريخ العودة",
+    ticketType:"نوع التذكرة", notSpecified:"غير محدد",
+    travelers:"عدد المسافرين",
+    budget:"الميزانية التقريبية", budgetPh:"مثال: 100000 دج",
+    message:"ملاحظات إضافية", messagePh:"أضف التفاصيل المهمة: الفندق المفضل، الأطفال، مرونة التواريخ، وغيرها.",
+    submit:"إرسال الطلب", sentBtn:"تم إرسال الطلب",
+    successTitle:"تم إرسال طلبك بنجاح.",
+    successText:"سيتواصل معك فريق Red X Travel قريبًا عبر الهاتف أو واتساب لاقتراح أفضل العروض المتاحة.",
+    contact:"معلومات التواصل", social:"وسائل التواصل الاجتماعي",
+    loginTitle:"دخول المسؤول", adminPrivate:"المساحة الخاصة بـ Red X Travel", loginBtn:"تسجيل الدخول", saveAccess:"حفظ الدخول على هذا الجهاز",
+    dashboard:"لوحة التحكم", dashboardSub:"إدارة طلبات العملاء والعروض من الهاتف.",
+    adminRequests:"الطلبات", adminOffers:"العروض", logout:"تسجيل الخروج",
+    requestsTitle:"طلبات العملاء", requestsSub:"اطّلع على الطلبات، غيّر حالتها أو احذف الطلبات التي تمت معالجتها.", refresh:"تحديث",
+    offersManage:"إدارة العروض", offersManageSub:"أضف إعلانًا جديدًا أو احذف عرضًا قديمًا.",
+    offerTitle:"عنوان العرض *", offerDetail:"التفاصيل / الصيغة", offerPrice:"السعر", offerOrder:"ترتيب الظهور", offerPhoto:"صورة العرض *", addOffer:"إضافة العرض"
   }
 };
 
-function setTextByContains(selector, oldText, newText){
-  document.querySelectorAll(selector).forEach(el=>{
-    if((el.textContent||"").trim().includes(oldText)) el.textContent=newText;
-  });
-}
-
-function setPlaceholderByName(name, value){
-  const el=document.querySelector(`[name="${name}"]`);
-  if(el) el.placeholder=value;
-}
+function langData(){ return I18N[localStorage.getItem("redx_lang") || "fr"] || I18N.fr; }
 
 function applyLanguage(lang){
-  const t=translations[lang]||translations.fr;
+  const t=I18N[lang]||I18N.fr;
   localStorage.setItem("redx_lang",lang);
   document.documentElement.lang=lang;
   document.documentElement.dir=t.dir;
-  document.body.classList.toggle("rtl",lang==="ar");
-
-  document.querySelectorAll("[data-lang]").forEach(btn=>btn.classList.toggle("active",btn.dataset.lang===lang));
-
-  setTextByContains("*","Agence touristique · Alger",t.tagline);
-  setTextByContains("*","Nos Offres",t.offersTitle);
-  setTextByContains("*","Faites défiler les photos à gauche ou à droite pour découvrir les offres actuelles.",t.offersSubtitle);
-  setTextByContains(".section-label","Demande personnalisée",t.requestLabel);
-  setTextByContains("h2","Demandez votre devis voyage.",t.requestTitle);
-  setTextByContains("p","Remplissez les informations essentielles. L’équipe Red X Travel vous contactera rapidement avec une proposition adaptée.",t.requestSubtitle);
-  setTextByContains("label","Nom complet *",t.fullName);
-  setTextByContains("label","Téléphone / WhatsApp *",t.phone);
-  setTextByContains("label","Email",t.email);
-  setTextByContains("label","Type de service *",t.serviceType);
-  setTextByContains("label","Pays de destination *",t.country);
-  setTextByContains("label","Ville de destination *",t.city);
-  setTextByContains("label","Date aller",t.departure);
-  setTextByContains("label","Date retour",t.returnDate);
-  setTextByContains("label","Type de billet",t.ticketType);
-  setTextByContains("label","Nombre de voyageurs",t.travelers);
-  setTextByContains("label","Budget approximatif",t.budget);
-  setTextByContains("label","Message complémentaire",t.message);
-  setTextByContains("button","Envoyer ma demande",t.submit);
-  setTextByContains("*","Contact",t.contact);
-  setTextByContains("*","Réseaux sociaux",t.social);
-
-  setTextByContains("h1","Accès Admin",t.loginTitle);
-  setTextByContains("p","Espace privé Red X Travel",t.adminPrivate);
-  setTextByContains(".remember-login span","Sauvegarder l’accès sur cet appareil",t.saveAccess);
-  setTextByContains("button","Se connecter",t.loginBtn);
-  setTextByContains("h1","Tableau de bord",t.dashboard);
-  setTextByContains("p","Gérez les demandes clients et les offres depuis votre téléphone.",t.dashboardSub);
-  setTextByContains("button","Demandes",t.adminRequests);
-  setTextByContains("button","Offres",t.adminOffers);
-  setTextByContains("button","Déconnexion",t.logout);
-  setTextByContains("h2","Demandes clients",t.requestsTitle);
-  setTextByContains("p","Consultez, changez le statut ou supprimez les demandes traitées.",t.requestsSub);
-  setTextByContains("button","Actualiser",t.refresh);
-  setTextByContains("h2","Gestion des offres",t.offersManage);
-  setTextByContains("p","Ajoutez une nouvelle affiche ou supprimez une ancienne offre.",t.offersManageSub);
-  setTextByContains("label","Titre de l’offre *",t.offerTitle);
-  setTextByContains("label","Détail / formule",t.offerDetail);
-  setTextByContains("label","Prix",t.offerPrice);
-  setTextByContains("label","Position d’affichage",t.offerOrder);
-  setTextByContains("label","Photo de l’offre *",t.offerPhoto);
-  setTextByContains("button","Ajouter l’offre",t.addOffer);
-
-  setPlaceholderByName("name",t.fullNamePh);
-  setPlaceholderByName("country",t.countryPh);
-  setPlaceholderByName("city",t.cityPh);
-  setPlaceholderByName("budget",t.budgetPh);
+  document.body.classList.toggle("rtl", lang==="ar");
+  document.querySelectorAll("[data-lang]").forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key=el.dataset.i18n;
+    if(t[key]) el.textContent=t[key];
+  });
+  const setPH=(name,val)=>{ const el=document.querySelector(`[name="${name}"]`); if(el) el.placeholder=val; };
+  setPH("name",t.fullNamePh); setPH("country",t.countryPh); setPH("city",t.cityPh); setPH("budget",t.budgetPh);
   const msg=document.querySelector('[name="message"]'); if(msg) msg.placeholder=t.messagePh;
-
-  const firstOption=document.querySelector('[name="serviceType"] option[value=""]'); if(firstOption) firstOption.textContent=t.chooseService;
-  const ticketOption=document.querySelector('[name="ticketType"] option[value=""]'); if(ticketOption) ticketOption.textContent=t.notSpecified;
+  const svc=document.querySelector('[name="serviceType"] option[value=""]'); if(svc) svc.textContent=t.chooseService;
+  const ticket=document.querySelector('[name="ticketType"] option[value=""]'); if(ticket) ticket.textContent=t.notSpecified;
 }
 
-document.addEventListener("click",(event)=>{
-  const btn=event.target.closest("[data-lang]");
-  if(!btn)return;
-  applyLanguage(btn.dataset.lang);
+document.addEventListener("click",e=>{
+  const btn=e.target.closest("[data-lang]");
+  if(btn) applyLanguage(btn.dataset.lang);
 });
 
-function currentLang(){
-  return localStorage.getItem("redx_lang")||"fr";
-}
-
-setTimeout(()=>applyLanguage(currentLang()),50);
+setTimeout(()=>applyLanguage(localStorage.getItem("redx_lang") || "fr"),30);
 
 await initFirebase();await loadOffers();showAdminIfNeeded();

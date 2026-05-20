@@ -1,12 +1,7 @@
-RED X TRAVEL ADMIN V10 - TRILINGUAL
+RED X TRAVEL ADMIN V11 - TRILINGUAL FIXED
 
-Ajout:
-- Sélecteur de langue FR / عربي / EN.
-- Le choix de langue est sauvegardé sur le téléphone.
-- Arabe avec direction RTL.
-- Traductions principales site public + admin.
-- Messages de confirmation traduits.
-
-Note:
-L’arabe est rédigé en arabe professionnel clair, adapté à une agence touristique.
-Plus tard on peut traduire aussi les contenus des offres ajoutées par l’admin selon la langue.
+Correction:
+- Répare le problème de page blanche / affichage cassé.
+- Ajoute FR / العربية / EN sans toucher à la structure du header.
+- Arabe en RTL propre.
+- Traduction principale du site + admin.

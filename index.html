@@ -7,10 +7,10 @@
   <link rel="icon" href="logo.jpg"><link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="language-switcher"><button type="button" data-lang="fr" class="active">FR</button><button type="button" data-lang="ar">عربي</button><button type="button" data-lang="en">EN</button></div>
 <header class="lux-header">
-  <a href="#home" class="lux-brand"><span class="brand-mark"><img src="logo.jpg" alt="Red X Travel"></span><span class="brand-copy"><strong>Red X Travel</strong><small>Agence touristique · Alger</small></span></a>
-  <div class="language-switcher" aria-label="Language selector"><button data-lang="fr" class="active">FR</button><button data-lang="ar">عربي</button><button data-lang="en">EN</button></div>
-      <nav class="lux-nav"><a href="#offers">Offres</a><a href="#request">Demande</a><a href="#contact">Contact</a></nav>
+  <a href="#home" class="lux-brand"><span class="brand-mark"><img src="logo.jpg" alt="Red X Travel"></span><span class="brand-copy"><strong>Red X Travel</strong><small data-i18n="tagline">Agence touristique · Alger</small></span></a>
+  <nav class="lux-nav"><a href="#offers" data-i18n="adminOffers">Offres</a><a href="#request">Demande</a><a href="#contact" data-i18n="contact">Contact</a></nav>
   <a href="https://wa.me/213664719894" target="_blank" rel="noreferrer" class="nav-cta"><span class="svg-icon whatsapp-icon"></span>WhatsApp</a>
 </header>
 
@@ -42,26 +42,26 @@
 
 <section id="request" class="request">
   <div class="request-head">
-    <span class="section-label">Demande personnalisée</span>
-    <h2>Demandez votre devis voyage.</h2>
-    <p>Remplissez les informations essentielles. L’équipe Red X Travel vous contactera rapidement avec une proposition adaptée.</p>
+    <span class="section-label" data-i18n="requestLabel">Demande personnalisée</span>
+    <h2 data-i18n="requestTitle">Demandez votre devis voyage.</h2>
+    <p data-i18n="requestSubtitle">Remplissez les informations essentielles. L’équipe Red X Travel vous contactera rapidement avec une proposition adaptée.</p>
   </div>
 
   <form id="travelForm" class="premium-form agency-form">
     <div class="form-row">
-      <label>Nom complet *
+      <label><span data-i18n="fullName">Nom complet *</span>
         <input name="name" type="text" placeholder="Ex: Mohamed Amine" required>
       </label>
-      <label>Téléphone / WhatsApp *
+      <label><span data-i18n="phone">Téléphone / WhatsApp *</span>
         <input name="phone" type="tel" placeholder="+213 ..." required>
       </label>
     </div>
 
     <div class="form-row">
-      <label>Email
+      <label><span data-i18n="email">Email</span>
         <input name="email" type="email" placeholder="exemple@email.com">
       </label>
-      <label>Type de service *
+      <label><span data-i18n="serviceType">Type de service *</span>
         <select name="serviceType" required>
           <option value="">Choisir un service</option>
           <option>Voyage organisé</option>
@@ -75,25 +75,25 @@
     </div>
 
     <div class="form-row">
-      <label>Pays de destination *
+      <label><span data-i18n="country">Pays de destination *</span>
         <input name="country" type="text" placeholder="Ex: Tunisie" required>
       </label>
-      <label>Ville de destination *
+      <label><span data-i18n="city">Ville de destination *</span>
         <input name="city" type="text" placeholder="Ex: Sousse" required>
       </label>
     </div>
 
     <div class="form-row">
-      <label>Date aller
+      <label><span data-i18n="departure">Date aller</span>
         <input name="departureDate" type="date">
       </label>
-      <label>Date retour
+      <label><span data-i18n="returnDate">Date retour</span>
         <input name="returnDate" type="date">
       </label>
     </div>
 
     <div class="form-row">
-      <label>Type de billet
+      <label><span data-i18n="ticketType">Type de billet</span>
         <select name="ticketType">
           <option value="">Non précisé</option>
           <option>Aller-retour</option>
@@ -101,7 +101,7 @@
           <option>Multiples vols</option>
         </select>
       </label>
-      <label>Nombre de voyageurs
+      <label><span data-i18n="travelers">Nombre de voyageurs</span>
         <select name="travelers">
           <option>1 voyageur</option>
           <option>2 voyageurs</option>
@@ -112,11 +112,11 @@
       </label>
     </div>
 
-    <label>Budget approximatif
+    <label><span data-i18n="budget">Budget approximatif</span>
       <input name="budget" type="text" placeholder="Ex: 100000 DA">
     </label>
 
-    <label>Message complémentaire
+    <label><span data-i18n="message">Message complémentaire</span>
       <textarea name="message" placeholder="Ajoutez les détails importants : hôtel souhaité, enfants, dates flexibles, etc."></textarea>
     </label>
 
@@ -126,7 +126,7 @@
 </section>
 
 <section id="contact" class="contact">
-  <div class="contact-card main-contact"><span class="section-label">Contact</span><h2>Red X Travel</h2><p>Agence touristique basée à Ouled Fayet, Alger. Contact direct pour devis, réservations et accompagnement voyage.</p><a href="https://wa.me/213664719894" target="_blank" rel="noreferrer" class="btn gold">Contacter sur WhatsApp</a></div>
+  <div class="contact-card main-contact"><span class="section-label" data-i18n="contact">Contact</span><h2>Red X Travel</h2><p>Agence touristique basée à Ouled Fayet, Alger. Contact direct pour devis, réservations et accompagnement voyage.</p><a href="https://wa.me/213664719894" target="_blank" rel="noreferrer" class="btn gold">Contacter sur WhatsApp</a></div>
   <div class="contact-card"><h3>Coordonnées</h3><a href="https://maps.google.com/?q=Ouled+Fayet+Alger+Algerie+16000" target="_blank" rel="noreferrer"><span class="svg-icon location-icon"></span>Ouled Fayet, Alger, Algérie 16000</a><a href="mailto:info@redxtravel.com"><span class="svg-icon mail-icon"></span>info@redxtravel.com</a><a href="https://wa.me/213664719894" target="_blank" rel="noreferrer"><span class="svg-icon phone-icon"></span>+213 664 71 98 94</a></div>
   <div class="contact-card"><h3>Réseaux</h3><a href="https://www.instagram.com/redxtravel" target="_blank" rel="noreferrer">Instagram</a><a href="https://www.facebook.com/share/1CCuVnPYRk/" target="_blank" rel="noreferrer">Facebook</a><a href="https://www.tiktok.com/@red.x.travel" target="_blank" rel="noreferrer">TikTok</a></div>
 </section>
@@ -140,17 +140,17 @@
   <div id="adminLogin" class="admin-login">
     <div class="login-card">
       <span class="brand-mark large"><img src="logo.jpg" alt="Red X Travel"></span>
-      <h1>Accès Admin</h1>
-      <p data-i18n="adminPrivate">Espace privé Red X Travel</p><div class="language-switcher admin-language-switcher" aria-label="Language selector"><button data-lang="fr" class="active">FR</button><button data-lang="ar">عربي</button><button data-lang="en">EN</button></div>
+      <h1 data-i18n="loginTitle">Accès Admin</h1>
+      <p data-i18n="adminPrivate">Espace privé Red X Travel</p><div class="language-switcher admin-language-switcher"><button type="button" data-lang="fr" class="active">FR</button><button type="button" data-lang="ar">عربي</button><button type="button" data-lang="en">EN</button></div>
       <input id="adminEmail" type="email" placeholder="Email admin">
       <input id="adminPassword" type="password" placeholder="Mot de passe">
 
       <label class="remember-login">
         <input id="rememberAdminLogin" type="checkbox">
-        <span>Sauvegarder l’accès sur cet appareil</span>
+        <span data-i18n="saveAccess">Sauvegarder l’accès sur cet appareil</span>
       </label>
 
-      <button id="adminLoginBtn">Se connecter</button>
+      <button id="adminLoginBtn" data-i18n="loginBtn">Se connecter</button>
       <small>Démo : admin@redxtravel.com / redx2026</small>
     </div>
   </div>
@@ -161,16 +161,16 @@
         <span class="brand-mark small"><img src="logo.jpg" alt="Red X Travel"></span>
         <strong>Red X Travel</strong>
       </div>
-      <button class="active" data-panel="requestsPanel">Demandes</button>
-      <button data-panel="offersPanel">Offres</button>
-      <button id="logoutBtn">Déconnexion</button>
+      <button class="active" data-panel="requestsPanel" data-i18n="adminRequests">Demandes</button>
+      <button data-panel="offersPanel" data-i18n="adminOffers">Offres</button>
+      <button id="logoutBtn" data-i18n="logout">Déconnexion</button>
     </aside>
 
     <div class="admin-content">
       <div class="admin-topbar">
         <div>
-          <h1>Tableau de bord</h1>
-          <p>Gérez les demandes clients et les offres depuis votre téléphone.</p>
+          <h1 data-i18n="dashboard">Tableau de bord</h1>
+          <p data-i18n="dashboardSub">Gérez les demandes clients et les offres depuis votre téléphone.</p>
         </div>
       </div>
 
@@ -182,10 +182,10 @@
       <div id="requestsPanel" class="admin-panel">
         <div class="panel-title">
           <div>
-            <h2>Demandes clients</h2>
-            <p>Consultez, changez le statut ou supprimez les demandes traitées.</p>
+            <h2 data-i18n="requestsTitle">Demandes clients</h2>
+            <p data-i18n="requestsSub">Consultez, changez le statut ou supprimez les demandes traitées.</p>
           </div>
-          <button id="refreshRequestsBtn" class="admin-secondary-btn">Actualiser</button>
+          <button id="refreshRequestsBtn" class="admin-secondary-btn" data-i18n="refresh">Actualiser</button>
         </div>
         <div id="requestsList" class="requests-list"></div>
       </div>
@@ -193,28 +193,28 @@
       <div id="offersPanel" class="admin-panel" hidden>
         <div class="panel-title">
           <div>
-            <h2>Gestion des offres</h2>
-            <p>Ajoutez une nouvelle affiche ou supprimez une ancienne offre.</p>
+            <h2 data-i18n="offersManage">Gestion des offres</h2>
+            <p data-i18n="offersManageSub">Ajoutez une nouvelle affiche ou supprimez une ancienne offre.</p>
           </div>
         </div>
 
         <form id="offerForm" class="offer-form">
-          <label>Titre de l’offre *
+          <label><span data-i18n="offerTitle">Titre de l’offre *</span>
             <input name="title" type="text" placeholder="Ex: Hotel Tour Khalef" required>
           </label>
-          <label>Détail / formule
+          <label><span data-i18n="offerDetail">Détail / formule</span>
             <input name="detail" type="text" placeholder="Ex: All inclusive soft">
           </label>
-          <label>Prix
+          <label><span data-i18n="offerPrice">Prix</span>
             <input name="price" type="text" placeholder="Ex: 21000 DA">
           </label>
-          <label>Position d’affichage
+          <label><span data-i18n="offerOrder">Position d’affichage</span>
             <input name="order" type="number" min="1" placeholder="1 = première offre">
           </label>
           <label class="full-field">Photo de l’offre *
             <input name="image" type="file" accept="image/*" required>
           </label>
-          <button type="submit" id="addOfferBtn">Ajouter l’offre</button>
+          <button type="submit" id="addOfferBtn" data-i18n="addOffer">Ajouter l’offre</button>
           <p id="offerStatus" class="offer-status"></p>
         </form>
 
