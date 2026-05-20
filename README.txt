@@ -1,23 +1,14 @@
-RED X TRAVEL ADMIN V5
+RED X TRAVEL ADMIN V6 - LOGIN FIXED
 
-Nouveautés:
-- Dashboard /admin amélioré.
-- Voir les demandes clients.
-- Modifier statut: Nouveau, Contacté, Confirmé, Annulé.
-- Supprimer les demandes traitées.
-- Ajouter une offre avec photo via Firebase Storage.
-- Supprimer une offre et son image Storage.
-- Offres dynamiques depuis Firestore collection: offers.
-- Demandes depuis Firestore collection: requests.
+Corrections:
+- Login admin ouvre correctement le dashboard.
+- Session admin sauvegardée pendant l’onglet ouvert.
+- Déconnexion supprime réellement la session.
+- Après déconnexion, retour propre vers écran login.
+- Touche Enter fonctionne dans le mot de passe.
 
-Important pour tester upload photo:
-Storage > Règles doit autoriser temporairement:
-rules_version = '2';
-service firebase.storage {
-  match /b/{bucket}/o {
-    match /{allPaths=**} {
-      allow read, write: if true;
-    }
-  }
-}
-Plus tard on sécurise avec Auth.
+Login démo:
+admin@redxtravel.com
+redx2026
+
+Après upload GitHub, Vercel redéploie automatiquement.

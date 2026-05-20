@@ -116,15 +116,45 @@ function renderAdminOffers(){
  if(!dynamic.length){grid.innerHTML=`<div class="empty-admin">Aucune offre dynamique pour le moment. Les offres actuelles restent affichées par défaut.</div>`;return}
  grid.innerHTML=dynamic.map(o=>`<div class="admin-offer-card"><img src="${o.image||o.imageUrl}" alt="${o.title||"Offre"}"><div><h3>${o.title||"Offre"}</h3><p>${o.detail||""}</p><strong>${o.price||"Prix sur demande"}</strong><button class="danger-btn full" data-delete-offer="${o.id}" data-storage-path="${o.storagePath||""}">Supprimer l’offre</button></div></div>`).join("");
 }
+function showAdminLogin(){
+ const login=$("#adminLogin"),dashboard=$("#adminDashboard");
+ if(login) login.hidden=false;
+ if(dashboard) dashboard.hidden=true;
+}
+
+async function showAdminDashboard(){
+ const login=$("#adminLogin"),dashboard=$("#adminDashboard");
+ if(login) login.hidden=true;
+ if(dashboard) dashboard.hidden=false;
+ await loadRequests();
+ await loadOffers();
+}
+
 function showAdminIfNeeded(){
  if(location.pathname.toLowerCase()!=="/admin")return;
- $("#publicSite")?.remove();$(".lux-header")?.remove();$(".site-footer")?.remove();$(".floating-whatsapp")?.remove();$("#adminSite").hidden=false;
+ $("#publicSite")?.remove();$(".lux-header")?.remove();$(".site-footer")?.remove();$(".floating-whatsapp")?.remove();
+ $("#adminSite").hidden=false;
+ const isLoggedIn=sessionStorage.getItem("redx_admin_logged_in")==="true";
+ if(isLoggedIn){showAdminDashboard()}else{showAdminLogin()}
 }
 $("#adminLoginBtn")?.addEventListener("click",async()=>{
  const email=$("#adminEmail").value.trim(),password=$("#adminPassword").value.trim(),admin=window.REDX_ADMIN||{};
- if(email===admin.email&&password===admin.password){$("#adminLogin").hidden=true;$("#adminDashboard").hidden=false;await loadRequests();await loadOffers()}else alert("Email ou mot de passe incorrect.");
+ if(email===admin.email&&password===admin.password){
+   sessionStorage.setItem("redx_admin_logged_in","true");
+   await showAdminDashboard();
+ }else{
+   alert("Email ou mot de passe incorrect.");
+ }
 });
-$("#logoutBtn")?.addEventListener("click",()=>{$("#adminLogin").hidden=false;$("#adminDashboard").hidden=true});
+
+$("#adminPassword")?.addEventListener("keydown",async(e)=>{
+ if(e.key==="Enter") $("#adminLoginBtn")?.click();
+});
+
+$("#logoutBtn")?.addEventListener("click",()=>{
+ sessionStorage.removeItem("redx_admin_logged_in");
+ showAdminLogin();
+});
 document.querySelectorAll("[data-panel]").forEach(b=>b.addEventListener("click",async()=>{
  document.querySelectorAll("[data-panel]").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.querySelectorAll(".admin-panel").forEach(p=>p.hidden=true);$("#"+b.dataset.panel).hidden=false;
  if(b.dataset.panel==="requestsPanel")await loadRequests(); if(b.dataset.panel==="offersPanel")await loadOffers();
