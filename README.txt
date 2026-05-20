@@ -1,12 +1,10 @@
-RED X TRAVEL AGENCY V4
+RED X TRAVEL V4 - SUCCESS MESSAGE FINAL
 
 Changements:
-- Suppression de la partie inutile 01/02/03 dans le formulaire.
-- Formulaire centré, propre et plus professionnel.
-- Améliorations desktop + responsive iPhone/Android.
-- Offres conservées en slider.
-- Contact premium conservé.
-- Admin /admin conservé.
+- Message client professionnel et instantané après envoi.
+- Bouton devient "Demande envoyée".
+- Envoi Firestore en arrière-plan.
+- Collection Firestore utilisée: requests
 
-Déploiement:
-Remplacer les fichiers dans GitHub, puis Vercel redéploie automatiquement.
+Où vérifier:
+Firebase Console > Firestore Database > Données > collection requests

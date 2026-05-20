@@ -153,3 +153,38 @@
     flex-basis:88vw;
   }
 }
+
+
+/* Professional form confirmation */
+.form-status.success-box{
+  margin:18px auto 0;
+  max-width:720px;
+  padding:18px 20px;
+  border-radius:18px;
+  background:linear-gradient(135deg, rgba(18,184,134,.12), rgba(18,184,134,.06));
+  border:1px solid rgba(18,184,134,.28);
+  color:#075f46;
+  text-align:left;
+  box-shadow:0 14px 34px rgba(18,184,134,.10);
+}
+
+.form-status .success-title{
+  display:block;
+  font-size:18px;
+  font-weight:950;
+  margin-bottom:6px;
+}
+
+.form-status .success-text{
+  display:block;
+  font-size:15px;
+  line-height:1.6;
+  font-weight:700;
+  color:#0b6b50;
+}
+
+.submit-lux:disabled,
+.submit-btn:disabled{
+  opacity:.85;
+  cursor:not-allowed;
+}
