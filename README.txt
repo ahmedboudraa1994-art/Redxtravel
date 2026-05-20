@@ -1,13 +1,9 @@
-RED X TRAVEL V17 - LOGOUT FIXED
+RED X TRAVEL V18 - NEW HERO BACKGROUND
 
-Correction:
-- Déconnexion admin corrigée avec handler global robuste.
-- Clic/tap iPhone capté même si d'autres scripts bloquent.
-- Supprime session admin + accès sauvegardé.
-- Redirection forcée vers /admin-login.
+Changement:
+- Image de fond du hero remplacée par la nouvelle affiche Red X Travel.
+- L’image reste en arrière-plan du hero.
+- Overlay foncé conservé pour garder le texte lisible en FR / AR / EN.
+- Compatible mobile iPhone/Android et PC.
 
-Tester:
-1. Ouvrir /admin
-2. Cliquer Déconnexion
-3. Doit retourner directement vers /admin-login
-4. Réouvrir /admin doit renvoyer vers /admin-login si non connecté
+Après upload GitHub, Vercel redéploie automatiquement.
