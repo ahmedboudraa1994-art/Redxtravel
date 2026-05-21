@@ -1,14 +1,10 @@
-RED X TRAVEL V44 - MOBILE HERO FIXED
+RED X TRAVEL V40 - CLEAN PHOTO NO DUPLICATE TEXT
 
 Correction:
-- Le hero mobile n'est plus en colonnes côte à côte.
-- Image vraie en haut, pleine largeur 16/9.
-- Badge, titre, texte et boutons empilés dessous.
-- Desktop/tablette restent en hero immersif.
-- Anciennes couches/overlays du hero neutralisées sur mobile.
-- Admin/Firebase/offres/formulaire non touchés.
-
-À tester:
-- iPhone Safari
-- Android Chrome
-- Desktop
+- Le problème était que la photo contenait déjà du texte/interface.
+- Création de deux images clean à partir de la zone visuelle sans texte:
+  hero-mobile-clean.jpg
+  hero-desktop-clean.jpg
+- Plus de texte fantôme derrière le vrai contenu.
+- Hero mobile/PC corrigé.
+- Firebase/admin/formulaire/offres non touchés.
