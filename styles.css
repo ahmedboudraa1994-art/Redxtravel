@@ -896,3 +896,193 @@ body.rtl .hero-bg {
     aspect-ratio: 16 / 9 !important;
   }
 }
+
+
+/* =========================================================
+   V44 FINAL MOBILE HERO LAYOUT FIX
+   Fixes the broken side-by-side mobile layout.
+   Mobile order:
+   1) header
+   2) image full width
+   3) badge/title/text/buttons stacked
+   ========================================================= */
+
+@media (max-width: 767px){
+
+  html, body{
+    overflow-x:hidden !important;
+  }
+
+  .hero-section{
+    display:flex !important;
+    flex-direction:column !important;
+    grid-template-columns:1fr !important;
+    min-height:auto !important;
+    height:auto !important;
+    width:100% !important;
+    padding:0 !important;
+    background:#061b35 !important;
+    overflow:hidden !important;
+    position:relative !important;
+  }
+
+  .hero-section::before,
+  .hero-section::after,
+  .hero::before,
+  .hero::after,
+  .hero-bg::before,
+  .hero-bg::after{
+    content:none !important;
+    display:none !important;
+    background:none !important;
+    opacity:0 !important;
+  }
+
+  .hero-bg{
+    order:1 !important;
+    position:relative !important;
+    inset:auto !important;
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    min-height:0 !important;
+    max-height:none !important;
+    aspect-ratio:16 / 9 !important;
+    transform:none !important;
+    margin:0 !important;
+    padding:0 !important;
+    background:none !important;
+    overflow:hidden !important;
+    z-index:1 !important;
+  }
+
+  .hero-img{
+    display:block !important;
+    width:100% !important;
+    height:100% !important;
+    max-width:none !important;
+    object-fit:cover !important;
+    object-position:center center !important;
+    transform:none !important;
+    filter:brightness(.88) saturate(1.06) !important;
+  }
+
+  .hero-content{
+    order:2 !important;
+    position:relative !important;
+    inset:auto !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    justify-content:flex-start !important;
+    width:100% !important;
+    max-width:none !important;
+    min-height:auto !important;
+    height:auto !important;
+    padding:34px 24px 58px !important;
+    margin:0 !important;
+    transform:none !important;
+    text-align:left !important;
+    background:linear-gradient(180deg,#061b35 0%,#071f3d 100%) !important;
+    z-index:2 !important;
+  }
+
+  body.rtl .hero-content{
+    text-align:right !important;
+    align-items:flex-end !important;
+  }
+
+  .hero-kicker{
+    display:inline-flex !important;
+    width:auto !important;
+    max-width:100% !important;
+    margin:0 0 26px !important;
+    transform:none !important;
+  }
+
+  .hero-content h1{
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 0 22px !important;
+    padding:0 !important;
+    font-size:clamp(42px, 12vw, 58px) !important;
+    line-height:1.05 !important;
+    letter-spacing:-.05em !important;
+    text-align:inherit !important;
+    transform:none !important;
+  }
+
+  body.rtl .hero-content h1{
+    line-height:1.15 !important;
+    letter-spacing:0 !important;
+  }
+
+  .hero-content p{
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 0 30px !important;
+    padding:0 !important;
+    font-size:20px !important;
+    line-height:1.55 !important;
+    text-align:inherit !important;
+    transform:none !important;
+  }
+
+  .hero-actions{
+    display:flex !important;
+    flex-direction:column !important;
+    gap:14px !important;
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 !important;
+    padding:0 !important;
+    transform:none !important;
+  }
+
+  .hero-actions .btn,
+  .hero-actions a{
+    width:100% !important;
+    min-height:62px !important;
+    justify-content:center !important;
+    text-align:center !important;
+  }
+
+  .service-grid{
+    margin-top:0 !important;
+  }
+
+  .floating-whatsapp{
+    z-index:20 !important;
+  }
+}
+
+/* Small iPhones */
+@media (max-width: 390px){
+  .hero-content{
+    padding-left:20px !important;
+    padding-right:20px !important;
+  }
+
+  .hero-content h1{
+    font-size:clamp(38px, 11.5vw, 52px) !important;
+  }
+
+  .hero-content p{
+    font-size:19px !important;
+  }
+}
+
+/* Desktop/tablet remains immersive */
+@media (min-width: 768px){
+  .hero-bg{
+    position:absolute !important;
+    inset:0 !important;
+  }
+
+  .hero-img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+    object-position:center center !important;
+  }
+}

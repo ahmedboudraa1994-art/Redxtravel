@@ -1,16 +1,14 @@
-RED X TRAVEL V43 - MOBILE IMAGE TOP ARCHITECTURE
+RED X TRAVEL V44 - MOBILE HERO FIXED
 
-Correction majeure:
-- Mobile ne force plus une image paysage en background 100vh.
-- Le hero mobile utilise maintenant une vraie balise <img> en haut.
-- Le contenu vient en dessous, style Airbnb/Booking.
-- Plus de zoom agressif mathématique sur iPhone.
-- Desktop/tablette gardent un hero immersif avec overlay.
-- Anciennes couches hero/background neutralisées.
-- Firebase/admin/offres/formulaire non touchés.
+Correction:
+- Le hero mobile n'est plus en colonnes côte à côte.
+- Image vraie en haut, pleine largeur 16/9.
+- Badge, titre, texte et boutons empilés dessous.
+- Desktop/tablette restent en hero immersif.
+- Anciennes couches/overlays du hero neutralisées sur mobile.
+- Admin/Firebase/offres/formulaire non touchés.
 
 À tester:
 - iPhone Safari
 - Android Chrome
-- Desktop large
-- Admin /admin
+- Desktop
