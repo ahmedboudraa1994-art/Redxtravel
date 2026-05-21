@@ -1,7 +1,10 @@
-RED X TRAVEL V37 FINAL VERIFIED
+RED X TRAVEL V39 - NO MOBILE ZOOM
 
-- Hero mobile amélioré et moins zoomé.
-- Photo voyage/luxe plus visible sur mobile.
-- PC/tablette vérifiés.
-- Texte lisible.
-- Admin/Firebase/offres/formulaire conservés.
+Correction:
+- Sur mobile, le hero n'utilise plus background-size: cover.
+- L'image est affichée en largeur complète: background-size: 100% auto.
+- Donc plus de zoom agressif et plus de coupe horizontale.
+- Le bas du hero reste propre avec un fond bleu nuit + dégradé.
+- PC/tablette gardent le rendu cover normal.
+- Aucune photo nouvelle ajoutée.
+- Firebase/admin/offres/formulaire non touchés.

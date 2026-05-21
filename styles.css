@@ -1277,3 +1277,66 @@ body.rtl .hero-bg{
     background-position:68% top !important;
   }
 }
+
+
+/* V39 — FINAL MOBILE NO-ZOOM HERO FIX
+   Problem solved: mobile no longer uses background-size: cover.
+   The hero image is displayed full-width, not cropped/zoomed.
+*/
+
+@media(max-width:767px){
+
+  .hero-section{
+    background:#061b35 !important;
+    overflow:hidden !important;
+  }
+
+  .hero-bg,
+  body.rtl .hero-bg{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(6,27,53,.36) 0%,
+        rgba(6,27,53,.46) 34%,
+        rgba(6,27,53,.86) 70%,
+        #061b35 100%
+      ),
+      url("hero-bg.jpg") top center / 100% auto no-repeat !important;
+
+    background-size:100% auto !important;
+    background-position:top center !important;
+    background-repeat:no-repeat !important;
+    background-color:#061b35 !important;
+  }
+
+  .hero-bg::before,
+  .hero-bg::after{
+    pointer-events:none !important;
+  }
+
+  .hero-bg::after{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(6,27,53,0) 0%,
+        rgba(6,27,53,.18) 34%,
+        rgba(6,27,53,.78) 64%,
+        #061b35 100%
+      ) !important;
+  }
+
+  .hero-content{
+    position:relative !important;
+    z-index:3 !important;
+  }
+}
+
+/* Desktop and tablet keep normal cinematic cover */
+@media(min-width:768px){
+  .hero-bg,
+  body.rtl .hero-bg{
+    background-size:cover !important;
+    background-position:center center !important;
+    background-repeat:no-repeat !important;
+  }
+}
