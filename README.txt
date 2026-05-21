@@ -1,8 +1,7 @@
-RED X TRAVEL V34 - CHOSEN MOBILE HERO PHOTO
+RED X TRAVEL V36 - MOBILE HERO FOCUS
 
-Changement:
-- Photo hero remplacée par la photo choisie.
-- Cadrage mobile-first.
-- Adaptation PC/tablette conservée.
-- Formulaire avec "Numéro de téléphone" conservé.
-- Firebase/admin/offres non touchés.
+Correction:
+- Mobile hero recadré pour montrer davantage la partie plage / coucher de soleil / palmiers.
+- Texte reste lisible grâce à un overlay ajusté.
+- PC/tablette inchangés.
+- Firebase/admin/offres/formulaire non touchés.
