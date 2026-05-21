@@ -737,28 +737,56 @@ body.rtl .admin-dashboard aside button{text-align:right}
   z-index: 2;
 }
 
-/* ── MOBILE (≤ 767px) ── */
+/* ── MOBILE (≤ 767px) — image en taille naturelle, ZERO zoom ── */
 @media (max-width: 767px) {
 
+  /* Le hero prend la hauteur de l'image — pas 100svh */
   .hero-section {
-    min-height: 100svh;
-    padding: 130px 20px 60px;
-    align-items: flex-start;
+    min-height: unset;
+    height: auto;
+    padding: 0;
+    display: block;
+    position: relative;
+    overflow: hidden;
   }
 
-  /* Sur mobile on positionne l'image pour voir le paysage
-     object-position: center 35% montre ciel + horizon */
+  /* hero-bg n'est plus absolu — il pousse le layout */
+  .hero-bg {
+    position: relative !important;
+    inset: unset !important;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    overflow: hidden;
+  }
+
+  /* L'image remplit son conteneur sans zoom */
   .hero-img {
-    object-position: center 35%;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
   }
 
-  /* Gradient vertical sur mobile */
+  /* Le contenu texte se superpose sur le bas de l'image */
+  .hero-content {
+    position: absolute !important;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 32px 24px 48px;
+    z-index: 2;
+  }
+
+  /* Gradient vertical fort sur le bas pour lisibilité du texte */
   .hero-section::after {
     background: linear-gradient(
       180deg,
-      rgba(6,27,53,.30) 0%,
-      rgba(6,27,53,.45) 40%,
-      rgba(6,27,53,.85) 100%
+      transparent 0%,
+      transparent 35%,
+      rgba(6,27,53,.70) 60%,
+      rgba(6,27,53,.92) 100%
     ) !important;
   }
 }
