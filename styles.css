@@ -1415,3 +1415,55 @@ body.rtl .hero-bg{
     z-index:3 !important;
   }
 }
+
+
+/* ===== V41 FINAL HERO FIX ===== */
+
+/* Remove ALL duplicated layers */
+.hero::before,
+.hero::after,
+.hero-bg::before,
+.hero-bg::after,
+.hero-section::before,
+.hero-section::after{
+  content:none !important;
+  display:none !important;
+  background:none !important;
+  opacity:0 !important;
+}
+
+/* Single clean background only */
+.hero,
+.hero-bg,
+.hero-section{
+  background-image:
+    linear-gradient(
+      rgba(6,27,53,0.62),
+      rgba(6,27,53,0.72)
+    ),
+    url('hero-bg.jpg') !important;
+
+  background-size:cover !important;
+  background-position:center center !important;
+  background-repeat:no-repeat !important;
+  isolation:isolate !important;
+}
+
+/* Mobile optimized */
+@media(max-width:768px){
+
+  .hero,
+  .hero-bg,
+  .hero-section{
+    background-size:cover !important;
+    background-position:center center !important;
+    min-height:100vh !important;
+  }
+
+  /* prevent duplicate transforms */
+  .hero *{
+    transform:none !important;
+    animation:none !important;
+  }
+}
+
