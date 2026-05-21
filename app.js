@@ -109,8 +109,42 @@ function renderRequests(){
  const list=$("#requestsList"),total=$("#totalRequests"); if(!list)return;
  if(total)total.textContent=requestsCache.length;
  if(!requestsCache.length){list.innerHTML=`<div class="empty-admin">Aucune demande pour le moment.</div>`;return}
- list.innerHTML=requestsCache.map(r=>`<article class="request-card"><div class="request-main"><div><h3>${r.name||"Client"}</h3><p>${[r.country,r.city].filter(Boolean).join(", ")||"Destination non précisée"}</p></div><span class="status-pill">${r.status||"Nouveau"}</span></div><div class="request-details"><p><strong>Téléphone:</strong> ${r.phone||"-"}</p><p><strong>Email:</strong> ${r.email||"-"}</p><p><strong>Service:</strong> ${r.serviceType||"-"}</p><p><strong>Billet:</strong> ${r.ticketType||"-"}</p><p><strong>Voyageurs:</strong> ${r.travelers||"-"}</p><p><strong>Dates:</strong> ${r.departureDate||"-"} → ${r.returnDate||"-"}</p><p><strong>Budget:</strong> ${r.budget||"-"}</p><p><strong>Message:</strong> ${r.message||"-"}</p></div><div class="request-actions"><select data-status="${r.id||""}"><option ${r.status==="Nouveau"?"selected":""}>Nouveau</option><option ${r.status==="Contacté"?"selected":""}>Contacté</option><option ${r.status==="Confirmé"?"selected":""}>Confirmé</option><option ${r.status==="Annulé"?"selected":""}>Annulé</option></select><a class="admin-whatsapp" href="https://wa.me/${String(r.phone||"").replace(/[^0-9]/g,"")}" target="_blank" rel="noreferrer">WhatsApp</a><button class="danger-btn" data-delete-request="${r.id||""}">Supprimer</button></div></article>`).join("");
+
+ list.innerHTML=requestsCache.map(r=>{
+  const destination = r.destination || r.country || r.city || "Destination non précisée";
+  const phone = r.phone || "-";
+  const rawMessage = r.message || "";
+  const showMessage = rawMessage && !String(rawMessage).startsWith("Destination souhaitée:");
+
+  return `<article class="request-card clean-request-card">
+   <div class="request-main">
+    <div>
+     <h3>${r.name||"Client"}</h3>
+     <p class="request-destination">${destination}</p>
+    </div>
+    <span class="status-pill">${r.status||"Nouveau"}</span>
+   </div>
+
+   <div class="request-details clean-request-details">
+    <p><strong>WhatsApp:</strong> ${phone}</p>
+    <p><strong>Destination:</strong> ${destination}</p>
+    ${showMessage ? `<p><strong>Message:</strong> ${rawMessage}</p>` : ""}
+   </div>
+
+   <div class="request-actions">
+    <select data-status="${r.id||""}">
+     <option ${r.status==="Nouveau"?"selected":""}>Nouveau</option>
+     <option ${r.status==="Contacté"?"selected":""}>Contacté</option>
+     <option ${r.status==="Confirmé"?"selected":""}>Confirmé</option>
+     <option ${r.status==="Annulé"?"selected":""}>Annulé</option>
+    </select>
+    <a class="admin-whatsapp" href="https://wa.me/${String(r.phone||"").replace(/[^0-9]/g,"")}" target="_blank" rel="noreferrer">WhatsApp</a>
+    <button class="danger-btn" data-delete-request="${r.id||""}">Supprimer</button>
+   </div>
+  </article>`
+ }).join("");
 }
+
 async function updateRequestStatus(id,status){if(!id||!firebaseReady)return;await firebaseFns.updateDoc(firebaseFns.doc(firestoreDb,"requests",id),{status});await loadRequests()}
 async function deleteRequest(id){if(!id||!firebaseReady)return;if(!confirm("Supprimer cette demande ?"))return;await firebaseFns.deleteDoc(firebaseFns.doc(firestoreDb,"requests",id));await loadRequests()}
 document.addEventListener("change",async e=>{const s=e.target.closest("[data-status]");if(s)await updateRequestStatus(s.dataset.status,s.value)});

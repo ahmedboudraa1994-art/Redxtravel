@@ -1,12 +1,11 @@
-RED X TRAVEL V31 - ICONS ONLY CORRECTED
+RED X TRAVEL V32 - ADMIN REQUEST CLEAN
 
-Base:
-- Reprise de la V28.
-- Même layout/design qu'avant.
-
-Correction uniquement:
-- Emojis services supprimés.
-- Remplacés par 3 icônes SVG professionnelles:
-  hôtel, avion, globe.
-- Aucune modification agressive d'espacement.
-- Firebase/admin/formulaire non touchés.
+Correction admin:
+- Les cartes demandes affichent seulement les infos du formulaire actuel:
+  Nom & prénom
+  WhatsApp
+  Destination
+  Message optionnel seulement s'il existe vraiment
+- Les champs inutiles ne s'affichent plus:
+  email, service, billet, voyageurs, dates, budget.
+- Firebase/admin/formulaire conservés.
