@@ -14,6 +14,9 @@ document.addEventListener("click", function(event){
     localStorage.removeItem("redx_admin_remember");
     localStorage.removeItem("redx_admin_email");
     localStorage.removeItem("redx_admin_password");
+    localStorage.removeItem("redx_admin_remember");
+    localStorage.removeItem("redx_admin_email");
+    localStorage.removeItem("redx_admin_password");
   }catch(e){}
 
   window.location.replace("/admin-login");
@@ -347,31 +350,17 @@ document.addEventListener("click",e=>{
   if(btn) applyLanguage(btn.dataset.lang);
 });
 
-$(".menu-toggle")?.addEventListener("click",(e)=>{
-  e.stopPropagation();
+$(".menu-toggle")?.addEventListener("click",()=>{
   const menu=$("#mobileMenu");
   const btn=$(".menu-toggle");
-  const isOpen=menu?.classList.toggle("open");
-  btn?.classList.toggle("open", isOpen);
-  btn?.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  menu?.classList.toggle("open");
+  btn?.setAttribute("aria-expanded", menu?.classList.contains("open") ? "true" : "false");
 });
 
 document.querySelectorAll(".mobile-menu a").forEach(a=>a.addEventListener("click",()=>{
   $("#mobileMenu")?.classList.remove("open");
-  $(".menu-toggle")?.classList.remove("open");
   $(".menu-toggle")?.setAttribute("aria-expanded","false");
 }));
-
-// Close mobile menu on outside click
-document.addEventListener("click",(e)=>{
-  const menu=$("#mobileMenu");
-  const btn=$(".menu-toggle");
-  if(menu?.classList.contains("open") && !menu.contains(e.target) && !btn?.contains(e.target)){
-    menu.classList.remove("open");
-    btn?.classList.remove("open");
-    btn?.setAttribute("aria-expanded","false");
-  }
-});
 
 setTimeout(()=>applyLanguage(localStorage.getItem("redx_lang") || "fr"),40);
 
