@@ -209,7 +209,7 @@ function loadRememberedAdmin(){
 function showAdminIfNeeded(){
  if(location.pathname.toLowerCase()!=="/admin")return;
  $("#publicSite")?.remove();$(".lux-header")?.remove();$(".site-footer")?.remove();$(".floating-whatsapp")?.remove();
- $("#adminSite").hidden=false;
+ if($("#adminSite")) $("#adminSite").hidden=false; else return; // separate admin pages handled by bootSeparatedAdmin
 
  const isLoggedIn=sessionStorage.getItem("redx_admin_logged_in")==="true";
  const hasRememberedAccess=loadRememberedAdmin();
@@ -395,7 +395,9 @@ document.querySelectorAll(".mobile-menu a").forEach(a=>a.addEventListener("click
 
 setTimeout(()=>applyLanguage(localStorage.getItem("redx_lang") || "fr"),40);
 
-await initFirebase();await loadOffers();showAdminIfNeeded();
+await initFirebase();
+if(!isAdminPath() && !isAdminLoginPath()) await loadOffers();
+showAdminIfNeeded();
 
 
 /* V16 separated admin security flow */
