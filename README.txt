@@ -1,8 +1,8 @@
-RED X TRAVEL V33
+RED X TRAVEL V34 - CHOSEN MOBILE HERO PHOTO
 
-Changements:
-- Nouvelle photo hero premium adaptée mobile + PC.
-- Formulaire: "Numéro WhatsApp" remplacé par "Numéro de téléphone".
-- Admin: affichage "Téléphone" au lieu de "WhatsApp" dans les infos.
-- Le bouton d'action WhatsApp admin reste disponible.
-- Firebase/admin/offres non cassés.
+Changement:
+- Photo hero remplacée par la photo choisie.
+- Cadrage mobile-first.
+- Adaptation PC/tablette conservée.
+- Formulaire avec "Numéro de téléphone" conservé.
+- Firebase/admin/offres non touchés.

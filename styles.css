@@ -1132,3 +1132,48 @@ body.rtl .contact-card{
     background-position:center top !important;
   }
 }
+
+
+/* V34 final chosen hero photo — mobile-first */
+.hero-section{
+  background:#061b35 !important;
+}
+
+.hero-bg{
+  background:
+    linear-gradient(180deg, rgba(6,27,53,.50) 0%, rgba(6,27,53,.56) 42%, rgba(6,27,53,.90) 100%),
+    url("hero-bg.jpg") center top / cover no-repeat !important;
+}
+
+/* PC: keep image cinematic and centered */
+@media(min-width:1024px){
+  .hero-bg{
+    background:
+      linear-gradient(90deg, rgba(6,27,53,.92) 0%, rgba(6,27,53,.68) 45%, rgba(6,27,53,.38) 100%),
+      url("hero-bg.jpg") center center / cover no-repeat !important;
+  }
+}
+
+/* Tablet */
+@media(min-width:768px) and (max-width:1023px){
+  .hero-bg{
+    background:
+      linear-gradient(180deg, rgba(6,27,53,.54) 0%, rgba(6,27,53,.66) 45%, rgba(6,27,53,.92) 100%),
+      url("hero-bg.jpg") center top / cover no-repeat !important;
+  }
+}
+
+/* Mobile: image was selected for this ratio, keep it natural */
+@media(max-width:767px){
+  .hero-bg{
+    background:
+      linear-gradient(180deg, rgba(6,27,53,.42) 0%, rgba(6,27,53,.48) 42%, rgba(6,27,53,.86) 100%),
+      url("hero-bg.jpg") center top / cover no-repeat !important;
+    background-position:center top !important;
+  }
+
+  .hero-bg::after{
+    background:
+      linear-gradient(180deg, rgba(6,27,53,0) 0%, rgba(6,27,53,.20) 42%, rgba(6,27,53,.82) 82%, #061b35 100%) !important;
+  }
+}
