@@ -1,7 +1,12 @@
-RED X TRAVEL V30
+RED X TRAVEL V31 - ICONS ONLY CORRECTED
 
-Correction demandée:
-- Retour au layout précédent.
-- Suppression des modifications agressives V29.
-- Conservation uniquement des icônes professionnelles SVG.
-- Emojis supprimés définitivement.
+Base:
+- Reprise de la V28.
+- Même layout/design qu'avant.
+
+Correction uniquement:
+- Emojis services supprimés.
+- Remplacés par 3 icônes SVG professionnelles:
+  hôtel, avion, globe.
+- Aucune modification agressive d'espacement.
+- Firebase/admin/formulaire non touchés.

@@ -1016,57 +1016,28 @@ body.rtl .contact-card{
 }
 
 
-/* V29 professional service icons + layout fix */
+/* V31 — only replace emoji look with professional SVG icons */
 .service-icon{
-  width:48px !important;
-  height:48px !important;
+  width:44px !important;
+  height:44px !important;
   display:inline-flex !important;
   align-items:center !important;
   justify-content:center !important;
-  margin-bottom:18px !important;
+  margin-bottom:16px !important;
   border-radius:16px !important;
-  background:rgba(255,255,255,.10) !important;
-  border:1px solid rgba(255,255,255,.18) !important;
+  background:rgba(255,255,255,.12) !important;
+  border:1px solid rgba(255,255,255,.16) !important;
   color:#f2cb74 !important;
   font-size:0 !important;
 }
 
 .service-icon svg{
-  width:25px !important;
-  height:25px !important;
+  width:24px !important;
+  height:24px !important;
   display:block !important;
   stroke:currentColor !important;
   fill:none !important;
   stroke-width:1.8 !important;
   stroke-linecap:round !important;
   stroke-linejoin:round !important;
-}
-
-.service-grid article{
-  min-height:170px;
-}
-
-/* Hide service icons if any old emoji/text sneaks in */
-.service-icon:not(:has(svg)){
-  font-size:0 !important;
-}
-
-
-
-
-/* V30 elegant minimal icons only */
-.service-icon{
-  width:42px !important;
-  height:42px !important;
-  margin-bottom:14px !important;
-  border-radius:14px !important;
-  background:rgba(255,255,255,.08) !important;
-  border:1px solid rgba(255,255,255,.12) !important;
-  box-shadow:none !important;
-}
-
-.service-icon svg{
-  width:22px !important;
-  height:22px !important;
-  stroke:#f2cb74 !important;
 }
