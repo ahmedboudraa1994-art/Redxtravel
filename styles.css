@@ -1014,3 +1014,78 @@ body.rtl .contact-card{
     padding-bottom:110px;
   }
 }
+
+
+/* V29 professional service icons + layout fix */
+.service-icon{
+  width:48px !important;
+  height:48px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  margin-bottom:18px !important;
+  border-radius:16px !important;
+  background:rgba(255,255,255,.10) !important;
+  border:1px solid rgba(255,255,255,.18) !important;
+  color:#f2cb74 !important;
+  font-size:0 !important;
+}
+
+.service-icon svg{
+  width:25px !important;
+  height:25px !important;
+  display:block !important;
+  stroke:currentColor !important;
+  fill:none !important;
+  stroke-width:1.8 !important;
+  stroke-linecap:round !important;
+  stroke-linejoin:round !important;
+}
+
+.service-grid article{
+  min-height:170px;
+}
+
+/* Hide service icons if any old emoji/text sneaks in */
+.service-icon:not(:has(svg)){
+  font-size:0 !important;
+}
+
+/* Better spacing so service cards do not look stuck under hero buttons */
+.service-grid{
+  margin-top:64px !important;
+}
+
+/* On mobile, separate service cards cleaner and avoid WhatsApp covering text */
+@media(max-width:767px){
+  .service-grid{
+    margin-top:56px !important;
+    padding-bottom:60px;
+  }
+
+  .service-grid article{
+    min-height:auto;
+    padding:24px !important;
+  }
+
+  .floating-whatsapp{
+    bottom:calc(env(safe-area-inset-bottom) + 74px) !important;
+  }
+}
+
+/* Premium fallback for browsers without :has support */
+@supports not selector(:has(*)){
+  .service-icon{
+    font-size:0 !important;
+  }
+}
+
+/* Keep header visually separate and avoid accidental overlap artifacts */
+.site-header{
+  box-shadow:0 18px 55px rgba(6,27,53,.30) !important;
+}
+
+/* Remove any remaining emoji rendering inside service cards */
+.service-grid article > span.service-icon{
+  font-family:Arial, sans-serif !important;
+}
