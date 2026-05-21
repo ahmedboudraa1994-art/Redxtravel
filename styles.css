@@ -1340,3 +1340,78 @@ body.rtl .hero-bg{
     background-repeat:no-repeat !important;
   }
 }
+
+
+/* V40 FINAL — clean photo without baked duplicate text
+   The previous photo had text/interface inside the image.
+   These clean cropped backgrounds show the resort/travel scene only. */
+
+.hero-section{
+  background:#061b35 !important;
+  overflow:hidden !important;
+}
+
+.hero-bg,
+body.rtl .hero-bg{
+  background:
+    linear-gradient(180deg,
+      rgba(6,27,53,.44) 0%,
+      rgba(6,27,53,.58) 44%,
+      rgba(6,27,53,.92) 100%
+    ),
+    url("hero-mobile-clean.jpg") center center / cover no-repeat !important;
+  background-position:center center !important;
+  background-size:cover !important;
+}
+
+/* Kill any old duplicate/ghost background layers */
+.hero-bg::before{
+  display:none !important;
+  content:none !important;
+  background:none !important;
+}
+
+.hero-bg::after{
+  background:
+    linear-gradient(180deg,
+      rgba(6,27,53,0) 0%,
+      rgba(6,27,53,.20) 36%,
+      rgba(6,27,53,.80) 78%,
+      #061b35 100%
+    ) !important;
+}
+
+/* Desktop uses clean wide resort image */
+@media(min-width:768px){
+  .hero-bg,
+  body.rtl .hero-bg{
+    background:
+      linear-gradient(90deg,
+        rgba(6,27,53,.92) 0%,
+        rgba(6,27,53,.68) 44%,
+        rgba(6,27,53,.34) 100%
+      ),
+      url("hero-desktop-clean.jpg") center center / cover no-repeat !important;
+    background-position:center center !important;
+  }
+}
+
+/* Mobile: no duplicate text, no screenshot overlay, only the clean scene */
+@media(max-width:767px){
+  .hero-bg,
+  body.rtl .hero-bg{
+    background:
+      linear-gradient(180deg,
+        rgba(6,27,53,.48) 0%,
+        rgba(6,27,53,.58) 42%,
+        rgba(6,27,53,.90) 100%
+      ),
+      url("hero-mobile-clean.jpg") center center / cover no-repeat !important;
+    background-position:center center !important;
+  }
+
+  .hero-content{
+    position:relative !important;
+    z-index:3 !important;
+  }
+}

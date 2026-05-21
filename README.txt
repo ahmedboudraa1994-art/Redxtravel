@@ -1,10 +1,10 @@
-RED X TRAVEL V39 - NO MOBILE ZOOM
+RED X TRAVEL V40 - CLEAN PHOTO NO DUPLICATE TEXT
 
 Correction:
-- Sur mobile, le hero n'utilise plus background-size: cover.
-- L'image est affichée en largeur complète: background-size: 100% auto.
-- Donc plus de zoom agressif et plus de coupe horizontale.
-- Le bas du hero reste propre avec un fond bleu nuit + dégradé.
-- PC/tablette gardent le rendu cover normal.
-- Aucune photo nouvelle ajoutée.
-- Firebase/admin/offres/formulaire non touchés.
+- Le problème était que la photo contenait déjà du texte/interface.
+- Création de deux images clean à partir de la zone visuelle sans texte:
+  hero-mobile-clean.jpg
+  hero-desktop-clean.jpg
+- Plus de texte fantôme derrière le vrai contenu.
+- Hero mobile/PC corrigé.
+- Firebase/admin/formulaire/offres non touchés.
