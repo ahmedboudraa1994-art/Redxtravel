@@ -14,9 +14,6 @@ document.addEventListener("click", function(event){
     localStorage.removeItem("redx_admin_remember");
     localStorage.removeItem("redx_admin_email");
     localStorage.removeItem("redx_admin_password");
-    localStorage.removeItem("redx_admin_remember");
-    localStorage.removeItem("redx_admin_email");
-    localStorage.removeItem("redx_admin_password");
   }catch(e){}
 
   window.location.replace("/admin-login");
@@ -473,4 +470,23 @@ $("#logoutBtn")?.addEventListener("click", ()=>{
   clearAdminSession();
   clearRememberedAdmin();
   location.replace(adminLoginUrl());
+});
+
+
+/* V28 close mobile menu on outside tap */
+document.addEventListener("click", function(event){
+  const menu = document.querySelector("#mobileMenu");
+  const toggle = document.querySelector(".menu-toggle");
+  if(!menu || !toggle || !menu.classList.contains("open")) return;
+  if(menu.contains(event.target) || toggle.contains(event.target)) return;
+  menu.classList.remove("open");
+  toggle.setAttribute("aria-expanded", "false");
+});
+
+document.addEventListener("keydown", function(event){
+  if(event.key !== "Escape") return;
+  const menu = document.querySelector("#mobileMenu");
+  const toggle = document.querySelector(".menu-toggle");
+  if(menu) menu.classList.remove("open");
+  if(toggle) toggle.setAttribute("aria-expanded", "false");
 });

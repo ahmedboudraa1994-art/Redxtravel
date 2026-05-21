@@ -709,3 +709,308 @@ body.rtl .hero-bg{
 body.rtl .hero-content h1{
   line-height:1.14 !important;
 }
+
+
+/* V27 — final hero background correction based on V25
+   Objectif: garder le même style V25, mais élargir la photo horizontalement
+   pour voir plus du visuel sans casser mobile/PC. */
+
+.hero-section{
+  background:#061b35 !important;
+}
+
+.hero-bg{
+  background-repeat:no-repeat !important;
+}
+
+/* PC / laptop: image panoramique et lisible */
+@media (min-width: 1024px){
+  .hero-bg{
+    background:
+      linear-gradient(
+        90deg,
+        rgba(6,27,53,.90) 0%,
+        rgba(6,27,53,.72) 45%,
+        rgba(6,27,53,.50) 100%
+      ),
+      url("hero-bg.jpg") center center / cover no-repeat !important;
+    background-position:center center !important;
+  }
+}
+
+/* Tablette */
+@media (min-width: 768px) and (max-width: 1023px){
+  .hero-bg{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(6,27,53,.58) 0%,
+        rgba(6,27,53,.72) 48%,
+        rgba(6,27,53,.94) 100%
+      ),
+      url("hero-bg.jpg") center top / 122% auto no-repeat !important;
+    background-size:122% auto !important;
+    background-position:center top !important;
+  }
+}
+
+/* Mobile: plus large horizontalement, style actuel conservé */
+@media (max-width: 767px){
+  .hero-bg{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(6,27,53,.54) 0%,
+        rgba(6,27,53,.66) 42%,
+        rgba(6,27,53,.88) 76%,
+        rgba(6,27,53,.96) 100%
+      ),
+      url("hero-bg.jpg") center top / 118% auto no-repeat !important;
+
+    background-size:118% auto !important;
+    background-position:center top !important;
+  }
+
+  .hero-bg::after{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(6,27,53,0) 0%,
+        rgba(6,27,53,.28) 38%,
+        rgba(6,27,53,.86) 78%,
+        #061b35 100%
+      ) !important;
+  }
+}
+
+/* Petits iPhones: un peu plus panoramique sans couper trop */
+@media (max-width: 430px){
+  .hero-bg{
+    background-size:122% auto !important;
+    background-position:center top !important;
+  }
+}
+
+/* Très petits écrans */
+@media (max-width: 380px){
+  .hero-bg{
+    background-size:128% auto !important;
+  }
+}
+
+/* Arabe: même cadrage, meilleure respiration du titre */
+body.rtl .hero-bg{
+  background-position:center top !important;
+}
+
+body.rtl .hero-content h1{
+  line-height:1.14 !important;
+}
+
+
+/* V28 CLEANUP — stable final overrides based on V27 */
+
+/* Load a premium modern font when available */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;650;750;850;900&display=swap');
+
+:root{
+  --ease-premium:cubic-bezier(.2,.8,.2,1);
+}
+
+/* Better global interactions */
+a, button, .btn, .slider-btn, .language-switcher button, .menu-toggle{
+  cursor:pointer;
+  transition:transform .22s var(--ease-premium), box-shadow .22s var(--ease-premium), background .22s var(--ease-premium), border-color .22s var(--ease-premium), opacity .22s var(--ease-premium);
+  -webkit-tap-highlight-color:transparent;
+}
+
+a:hover, button:hover, .btn:hover{
+  transform:translateY(-1px);
+}
+
+a:active, button:active, .btn:active{
+  transform:translateY(0) scale(.99);
+}
+
+/* Hero background: one final source of truth */
+.hero-section{
+  background:#061b35 !important;
+  overflow:hidden;
+}
+
+.hero-bg{
+  background-repeat:no-repeat !important;
+}
+
+/* Desktop hero */
+@media(min-width:1024px){
+  .hero-bg{
+    background:
+      linear-gradient(90deg,rgba(6,27,53,.92) 0%,rgba(6,27,53,.70) 44%,rgba(6,27,53,.45) 100%),
+      url("hero-bg.jpg") center center / cover no-repeat !important;
+  }
+}
+
+/* Tablet hero */
+@media(min-width:768px) and (max-width:1023px){
+  .hero-bg{
+    background:
+      linear-gradient(180deg,rgba(6,27,53,.58) 0%,rgba(6,27,53,.72) 46%,rgba(6,27,53,.94) 100%),
+      url("hero-bg.jpg") center top / 122% auto no-repeat !important;
+  }
+}
+
+/* Mobile hero — panoramic but controlled */
+@media(max-width:767px){
+  .hero-bg{
+    background:
+      linear-gradient(180deg,rgba(6,27,53,.54) 0%,rgba(6,27,53,.66) 42%,rgba(6,27,53,.88) 76%,rgba(6,27,53,.96) 100%),
+      url("hero-bg.jpg") center top / 122% auto no-repeat !important;
+  }
+
+  .hero-bg::after{
+    background:
+      linear-gradient(180deg,rgba(6,27,53,0) 0%,rgba(6,27,53,.22) 35%,rgba(6,27,53,.82) 78%,#061b35 100%) !important;
+  }
+
+  .hero-content h1{
+    font-size:clamp(40px,11vw,58px) !important;
+    line-height:1.06 !important;
+  }
+
+  .hero-content p{
+    font-size:20px !important;
+    line-height:1.55 !important;
+  }
+}
+
+@media(max-width:430px){
+  .hero-bg{
+    background-size:128% auto !important;
+  }
+}
+
+/* Header stability */
+.site-header{
+  isolation:isolate;
+}
+
+.language-switcher{
+  flex-shrink:0;
+}
+
+.menu-toggle span{
+  transition:transform .22s var(--ease-premium), opacity .22s var(--ease-premium);
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(1){
+  transform:translateY(7px) rotate(45deg);
+}
+.menu-toggle[aria-expanded="true"] span:nth-child(2){
+  opacity:0;
+}
+.menu-toggle[aria-expanded="true"] span:nth-child(3){
+  transform:translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile menu polished */
+.mobile-menu{
+  border:1px solid rgba(255,255,255,.14);
+  backdrop-filter:blur(18px);
+}
+
+.mobile-menu.open{
+  animation:menuDrop .22s var(--ease-premium);
+}
+
+@keyframes menuDrop{
+  from{opacity:0; transform:translateY(-8px) scale(.98)}
+  to{opacity:1; transform:translateY(0) scale(1)}
+}
+
+/* Services: add modern icon feel */
+.service-grid article{
+  position:relative;
+  overflow:hidden;
+}
+
+.service-grid article::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  background:linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,0));
+  pointer-events:none;
+}
+
+.service-icon{
+  width:44px;
+  height:44px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:16px;
+  border-radius:16px;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.16);
+  font-size:23px;
+}
+
+/* Slider controls above overflow */
+.offer-shell{
+  overflow:visible;
+}
+
+.slider-btn{
+  z-index:8 !important;
+  box-shadow:0 16px 34px rgba(6,27,53,.22);
+}
+
+.slider-btn:hover{
+  background:#061b35;
+}
+
+/* Floating WhatsApp premium */
+.floating-whatsapp{
+  gap:10px;
+  border:1px solid rgba(255,255,255,.20);
+}
+
+.wa-icon{
+  width:26px;
+  height:26px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:rgba(255,255,255,.18);
+  font-weight:900;
+}
+
+/* Contact card hover polish */
+.contact-card a:hover,
+.social-links a:hover{
+  opacity:.92;
+  transform:translateY(-2px);
+}
+
+/* RTL fixes */
+body.rtl .hero-content h1{
+  line-height:1.14 !important;
+}
+
+body.rtl .service-grid article,
+body.rtl .trust-grid article,
+body.rtl .contact-card{
+  text-align:right;
+}
+
+/* Safer mobile footer/bottom spacing with WhatsApp */
+@media(max-width:767px){
+  body{
+    padding-bottom:calc(env(safe-area-inset-bottom) + 8px);
+  }
+
+  .contact-section{
+    padding-bottom:110px;
+  }
+}
