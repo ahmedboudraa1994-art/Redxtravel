@@ -148,11 +148,16 @@ button,input,select,textarea{font:inherit}
 }
 .hero-bg{
   position:absolute;inset:0;
-  /* background géré par .hero-img + overlay ::after sur .hero-section */
+  background:
+    linear-gradient(90deg,rgba(6,27,53,.92),rgba(6,27,53,.72),rgba(6,27,53,.50)),
+    url("hero-bg.jpg") center/cover no-repeat;
+  filter:saturate(.9);
 }
 .hero-bg::after{
-  content:none;
-  display:none;
+  content:"";
+  position:absolute;inset:0;
+  background:radial-gradient(circle at 20% 20%,rgba(242,203,116,.18),transparent 34%),
+             linear-gradient(180deg,transparent 70%,rgba(247,251,255,1) 100%);
 }
 .hero-content{
   position:relative;
@@ -672,12 +677,12 @@ body.rtl .admin-dashboard aside button{text-align:right}
 
 
 /* ─────────────────────────────────────────────
-   HERO BACKGROUND — IMG TAG APPROACH (v42)
-   Utilise un vrai <img> avec object-fit pour
-   contrôle précis sur mobile et desktop.
+   HERO BACKGROUND — DEFINITIVE CLEAN VERSION
+   Desktop : hero-desktop-clean.jpg (1920×1080, landscape)
+   Mobile  : hero-desktop-clean.jpg with landscape crop via background-position
    ───────────────────────────────────────────── */
 
-/* Neutralise tous les pseudo-éléments parasites */
+/* Reset any pseudo-element layers */
 .hero-bg::before,
 .hero-bg::after,
 .hero-section::before,
@@ -688,155 +693,206 @@ body.rtl .admin-dashboard aside button{text-align:right}
   opacity: 0 !important;
 }
 
-/* Hero section container */
+/* Base hero section */
 .hero-section {
   background: #061b35;
   overflow: hidden;
 }
 
-/* hero-bg devient un simple conteneur absolu sans background */
+/* ── DESKTOP (≥ 768px) — paysage naturel ── */
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: none !important;
-  overflow: hidden;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(6,27,53,.88) 0%,
+      rgba(6,27,53,.62) 48%,
+      rgba(6,27,53,.28) 100%
+    ),
+    url("hero-desktop-clean.jpg") center center / cover no-repeat;
+  filter: saturate(.92);
 }
 
-/* L'image réelle — object-fit donne un contrôle parfait */
-.hero-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
-  filter: saturate(.9) brightness(.72);
-  display: block;
-}
-
-/* Overlay gradient par-dessus l'image — via ::after sur hero-section */
-.hero-section::after {
-  content: "" !important;
-  display: block !important;
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  /* Desktop : gradient horizontal, texte à gauche */
-  background: linear-gradient(
-    90deg,
-    rgba(6,27,53,.82) 0%,
-    rgba(6,27,53,.52) 50%,
-    rgba(6,27,53,.18) 100%
-  );
-}
-
-/* hero-content passe au-dessus de l'overlay */
-.hero-content {
-  position: relative;
-  z-index: 2;
-}
-
-/* ── MOBILE (≤ 767px) ── */
+/* ── MOBILE (≤ 767px) — même image paysage, recadrée sur le centre ── */
 @media (max-width: 767px) {
-
   .hero-section {
     min-height: 100svh;
     padding: 130px 20px 60px;
     align-items: flex-start;
   }
 
-  /* Sur mobile on positionne l'image pour voir le paysage
-     object-position: center 35% montre ciel + horizon */
+  .hero-bg {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(6,27,53,.42) 0%,
+        rgba(6,27,53,.55) 45%,
+        rgba(6,27,53,.88) 100%
+      ),
+      url("hero-desktop-clean.jpg") center 40% / cover no-repeat;
+    /* center 40% shows the horizon/sky — feeling of landscape, not cropped */
+  }
+}
+
+/* ── Petits iPhones (≤ 390px) ── */
+@media (max-width: 390px) {
+  .hero-bg {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(6,27,53,.44) 0%,
+        rgba(6,27,53,.58) 45%,
+        rgba(6,27,53,.90) 100%
+      ),
+      url("hero-desktop-clean.jpg") center 38% / cover no-repeat;
+  }
+}
+
+
+
+/* =========================================================
+   V43 MOBILE-FIRST HERO ARCHITECTURE
+   Mobile = real image on top + content below, no forced 100vh cover crop.
+   Desktop = classic immersive hero.
+   ========================================================= */
+
+/* neutralize old background-image hero conflicts */
+.hero-bg,
+body.rtl .hero-bg {
+  background-image:none !important;
+  background:none !important;
+  overflow:hidden !important;
+}
+
+.hero-bg::before,
+.hero-bg::after,
+.hero::before,
+.hero::after,
+.hero-section::before,
+.hero-section::after {
+  content:none !important;
+  display:none !important;
+  background:none !important;
+  opacity:0 !important;
+}
+
+.hero-img {
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+  filter:brightness(.78) saturate(1.05) !important;
+}
+
+/* DESKTOP / TABLET: keep premium overlay hero */
+@media (min-width:768px) {
+  .hero-section,
+  .hero {
+    position:relative !important;
+    min-height:92vh !important;
+    overflow:hidden !important;
+    background:#061b35 !important;
+  }
+
+  .hero-bg {
+    position:absolute !important;
+    inset:0 !important;
+    z-index:0 !important;
+  }
+
+  .hero-bg::after {
+    content:"" !important;
+    display:block !important;
+    position:absolute !important;
+    inset:0 !important;
+    opacity:1 !important;
+    background:linear-gradient(90deg, rgba(6,27,53,.92) 0%, rgba(6,27,53,.65) 42%, rgba(6,27,53,.25) 100%) !important;
+    z-index:1 !important;
+  }
+
+  .hero-content,
+  .site-header {
+    position:relative !important;
+    z-index:2 !important;
+  }
+
   .hero-img {
-    object-position: center 35%;
-  }
-
-  /* Gradient vertical sur mobile */
-  .hero-section::after {
-    background: linear-gradient(
-      180deg,
-      rgba(6,27,53,.30) 0%,
-      rgba(6,27,53,.45) 40%,
-      rgba(6,27,53,.85) 100%
-    ) !important;
+    object-position:center center !important;
   }
 }
 
+/* MOBILE: image first, content below. No zoomed full-height background. */
+@media (max-width:767px) {
+  .hero-section,
+  .hero {
+    min-height:auto !important;
+    height:auto !important;
+    background:#061b35 !important;
+    overflow:visible !important;
+  }
 
-/* ── CLASSES MANQUANTES — correctifs finaux ── */
+  .hero-bg {
+    position:relative !important;
+    inset:auto !important;
+    width:100% !important;
+    height:auto !important;
+    aspect-ratio: 16 / 9 !important;
+    min-height:0 !important;
+    z-index:0 !important;
+    border-bottom:1px solid rgba(255,255,255,.08) !important;
+  }
 
-/* short-form-grid : grille compacte pour le formulaire rapide (3 champs) */
-.short-form-grid {
-  grid-template-columns: repeat(2, 1fr);
-}
-.short-form-grid label.full {
-  grid-column: 1 / -1;
-}
+  .hero-img {
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+    object-position:center 40% !important;
+    filter:brightness(.86) saturate(1.06) !important;
+  }
 
-/* form-first-section et offers-after-form : espacements ajustés */
-.form-first-section {
-  padding-top: 60px;
-}
-.offers-after-form {
-  padding-top: 40px;
-}
+  .site-header {
+    position:relative !important;
+    z-index:3 !important;
+  }
 
-/* empty-offer-card : carte placeholder quand aucune offre */
-.empty-offer-card {
-  flex: 0 0 min(76vw, 520px);
-  min-height: 280px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 32px;
-  border-radius: 30px;
-  background: white;
-  box-shadow: var(--shadow);
-  text-align: center;
-}
-.empty-offer-card h3 {
-  margin: 16px 0 10px;
-  font-size: 22px;
-  color: var(--navy);
-}
-.empty-offer-card p {
-  color: var(--muted);
-  font-size: 16px;
-  line-height: 1.55;
-}
+  .hero-content {
+    position:relative !important;
+    z-index:2 !important;
+    padding-top:34px !important;
+    padding-bottom:54px !important;
+    background:linear-gradient(180deg, #061b35 0%, #071f3d 100%) !important;
+  }
 
-/* order-badge : badge de position dans la grille admin */
-.order-badge {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 5px 12px;
-  border-radius: 999px;
-  background: var(--soft);
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 850;
-}
+  .hero-content h1 {
+    max-width:94% !important;
+  }
 
-/* brand-mark.small : logo compact dans la sidebar admin */
-.brand-mark.small img {
-  width: 50px;
-  height: 50px;
-  border-radius: 14px;
-  object-fit: cover;
-  background: white;
+  .hero-content p {
+    max-width:94% !important;
+  }
+
+  .hero-cta,
+  .hero-actions {
+    position:relative !important;
+    z-index:3 !important;
+  }
 }
 
-/* brand-mark.large : centré pour la page login */
-.brand-mark.large {
-  display: block;
-  text-align: center;
-  margin-bottom: 8px;
+/* Small iPhone: slightly taller image, still no 100vh crop */
+@media (max-width:430px) {
+  .hero-bg {
+    aspect-ratio: 16 / 9 !important;
+  }
+
+  .hero-img {
+    object-position:center 38% !important;
+  }
 }
 
-/* Correctif mobile : short-form-grid passe en 1 colonne */
-@media (max-width: 767px) {
-  .short-form-grid {
-    grid-template-columns: 1fr;
+@media (max-width:380px) {
+  .hero-bg {
+    aspect-ratio: 16 / 9 !important;
   }
 }
