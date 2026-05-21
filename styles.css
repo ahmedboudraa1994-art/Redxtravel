@@ -709,8 +709,8 @@ body.rtl .admin-dashboard aside button{text-align:right}
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 60%;
-  filter: saturate(1.05) brightness(.88);
+  object-position: center 55%;
+  filter: saturate(1.05) brightness(.90);
   display: block;
 }
 
