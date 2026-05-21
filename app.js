@@ -126,7 +126,7 @@ function renderRequests(){
    </div>
 
    <div class="request-details clean-request-details">
-    <p><strong>WhatsApp:</strong> ${phone}</p>
+    <p><strong>Téléphone:</strong> ${phone}</p>
     <p><strong>Destination:</strong> ${destination}</p>
     ${showMessage ? `<p><strong>Message:</strong> ${rawMessage}</p>` : ""}
    </div>
@@ -257,8 +257,8 @@ const I18N = {
     currentOffers:"OFFRES ACTUELLES", offersHeading:"Découvrez ensuite les offres disponibles.",
     offersText:"Les affiches regroupent les informations essentielles pour comparer rapidement avant de confirmer votre demande.",
     requestLabel:"Demande personnalisée", requestTitle:"Dites-nous où vous souhaitez partir.",
-    requestSubtitle:"Nom, WhatsApp et destination suffisent. Un conseiller Red X Travel vous contacte rapidement avec les meilleures options.",
-    fullName:"Nom & prénom *", fullNamePh:"Ex: Mohamed Amine", destination:"Destination souhaitée *", phone:"Numéro WhatsApp *", email:"Email",
+    requestSubtitle:"Nom, téléphone et destination suffisent. Un conseiller Red X Travel vous contacte rapidement avec les meilleures options.",
+    fullName:"Nom & prénom *", fullNamePh:"Ex: Mohamed Amine", destination:"Destination souhaitée *", phone:"Numéro de téléphone *", email:"Email",
     serviceType:"Type de service *", chooseService:"Choisir un service",
     country:"Pays de destination *", countryPh:"Ex: Istanbul, Dubaï, Tunisie...", city:"Ville de destination *", cityPh:"Ex: Sousse",
     departure:"Date aller", returnDate:"Date retour", ticketType:"Type de billet", notSpecified:"Non précisé",
@@ -293,8 +293,8 @@ const I18N = {
     currentOffers:"CURRENT OFFERS", offersHeading:"Then explore the available offers.",
     offersText:"Each poster includes the key details, making it easy to compare before confirming your request.",
     requestLabel:"Personalized request", requestTitle:"Tell us where you want to go.",
-    requestSubtitle:"Name, WhatsApp and destination are enough. A Red X Travel advisor will contact you shortly with the best options.",
-    fullName:"Full name *", fullNamePh:"Ex: Mohamed Amine", destination:"Desired destination *", phone:"WhatsApp number *", email:"Email",
+    requestSubtitle:"Name, phone number and destination are enough. A Red X Travel advisor will contact you shortly with the best options.",
+    fullName:"Full name *", fullNamePh:"Ex: Mohamed Amine", destination:"Desired destination *", phone:"Phone number *", email:"Email",
     serviceType:"Service type *", chooseService:"Choose a service",
     country:"Destination country *", countryPh:"Ex: Istanbul, Dubai, Tunisia...", city:"Destination city *", cityPh:"Ex: Sousse",
     departure:"Departure date", returnDate:"Return date", ticketType:"Ticket type", notSpecified:"Not specified",
@@ -329,8 +329,8 @@ const I18N = {
     currentOffers:"العروض الحالية", offersHeading:"ثم تصفّح العروض المتاحة.",
     offersText:"كل صورة تجمع أهم تفاصيل العرض لتسهيل المقارنة قبل تأكيد طلبك.",
     requestLabel:"طلب مخصّص", requestTitle:"أخبرنا إلى أين تريد السفر.",
-    requestSubtitle:"الاسم، رقم واتساب والوجهة تكفي. سيتواصل معك مستشار من Red X Travel قريبًا بأفضل الخيارات.",
-    fullName:"الاسم واللقب *", fullNamePh:"مثال: محمد أمين", destination:"الوجهة المطلوبة *", phone:"رقم واتساب *", email:"البريد الإلكتروني",
+    requestSubtitle:"الاسم، رقم الهاتف والوجهة تكفي. سيتواصل معك مستشار من Red X Travel قريبًا بأفضل الخيارات.",
+    fullName:"الاسم واللقب *", fullNamePh:"مثال: محمد أمين", destination:"الوجهة المطلوبة *", phone:"رقم الهاتف *", email:"البريد الإلكتروني",
     serviceType:"نوع الخدمة *", chooseService:"اختر الخدمة",
     country:"بلد الوجهة *", countryPh:"مثال: إسطنبول، دبي، تونس...", city:"مدينة الوجهة *", cityPh:"مثال: سوسة",
     departure:"تاريخ الذهاب", returnDate:"تاريخ العودة", ticketType:"نوع التذكرة", notSpecified:"غير محدد",

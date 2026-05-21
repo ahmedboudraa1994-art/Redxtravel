@@ -1,11 +1,8 @@
-RED X TRAVEL V32 - ADMIN REQUEST CLEAN
+RED X TRAVEL V33
 
-Correction admin:
-- Les cartes demandes affichent seulement les infos du formulaire actuel:
-  Nom & prénom
-  WhatsApp
-  Destination
-  Message optionnel seulement s'il existe vraiment
-- Les champs inutiles ne s'affichent plus:
-  email, service, billet, voyageurs, dates, budget.
-- Firebase/admin/formulaire conservés.
+Changements:
+- Nouvelle photo hero premium adaptée mobile + PC.
+- Formulaire: "Numéro WhatsApp" remplacé par "Numéro de téléphone".
+- Admin: affichage "Téléphone" au lieu de "WhatsApp" dans les infos.
+- Le bouton d'action WhatsApp admin reste disponible.
+- Firebase/admin/offres non cassés.
